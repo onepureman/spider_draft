@@ -1,0 +1,10 @@
+_support: 10000000
+deviceid: 57a2c0be-78f5-4c67-bb56-d839274b0d6d
+appVersion: pcweb-6.3.0.gray
+dname:
+src: intelmgtv
+invoker: pcweb
+username: 18513606786
+password: jing1995
+smscode: 86
+captcha:

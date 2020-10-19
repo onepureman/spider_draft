@@ -1,0 +1,8 @@
+accept: text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01
+accept-encoding: gzip, deflate, br
+accept-language: zh-CN,zh;q=0.9
+referer: https://my.39.net/passport/login.aspx
+sec-fetch-mode: cors
+sec-fetch-site: same-origin
+user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+x-requested-with: XMLHttpRequest

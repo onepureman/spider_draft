@@ -1,0 +1,24 @@
+src: pcw_home
+from: pcw_home
+charset: UTF-8
+requestScema: https
+quc_sdk_version: 6.8.5
+quc_sdk_name: jssdk
+o: sso
+m: login
+lm: 0
+captFlag: 1
+rtype: data
+validatelm: 0
+isKeepAlive: 1
+captchaApp: i360
+userName: 18513606786
+smDeviceId:
+type: normal
+account: 18513606786
+password: 1bbd886460827015e5d605ed44252251
+captcha:
+token: a18a5109595f31d8
+proxy: https://i.360.cn/psp_jump.html
+callback: QiUserJsonp484218891
+func: QiUserJsonp484218891

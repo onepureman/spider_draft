@@ -1,0 +1,8 @@
+mod: login
+action: dopost
+url: https://www.iqiyecha.com/
+userid: 1111111
+userpwd: 23333
+checkcode: v5yd
+memory: on
+log_submit: 立即登录

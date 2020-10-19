@@ -1,0 +1,17 @@
+locale: zh_CN
+nodetect: false
+destURL:
+supportLoginDevice: true
+accessToken:
+timestamp:
+signature:
+nonce:
+device: {"uuid":"webmail_windows","imie":"webmail_windows","friendlyName":"chrome 78","model":"windows","os":"windows","osLanguage":"zh-CN","deviceType":"Webmail"}
+supportDynamicPwd: true
+supportBind2FA: true
+authorizeDevice:
+loginType:
+uid: 18513606786
+domain:
+password: Jing1995.
+action:login:

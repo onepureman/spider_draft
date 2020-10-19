@@ -1,0 +1,11 @@
+accountType: 01
+pwdType: 02
+account: 15215215211
+password: lRIzoJqSsFZ80ehi9rJeuOD7KCymGhunTkVIXAEeuJTK9nnp9MWBbUnNRCOIjV9EKh1qtPTd9xiOJv61LsLgpZOyIoB0d1UAsVF/Wfb3gULHrJPI3xtxXUqqEGldIG6wBnfPPZ07DDTJVRY28nnXYQmER6lCrN8nJ4i3hnojF5RVh8oGWVWco4kfl5pBOU8WHp2lOfQVWrLWfdQh0mXsjGBN+T0GfjYUHHBqAvmnpZU3qY1lF7tkadlCGpexYsK7MK92NIG3+CXatAW4KGZq5BFvD9Ux4eefr1poIyLxawZey4x0ZF+ZBn2SUEZ/ufoOZKXTEzaHu6zsYioRj+hvNQ==
+inputCode:
+backUrl: http://wap.10086.cn/bj/index_100_100.html
+rememberMe: 0
+channelID: 12022
+loginMode: 03
+protocol: https:
+timestamp: 1602467877409
