@@ -1310,21 +1310,21 @@ this.seajs = {_seajs: this.seajs}, seajs.version = "1.3.1", seajs._util = {}, se
     var o = e("./jquery-1.7"), s = o("#loginAlert"), l = o("#dialogCover"), c = o("#loginWindow"),
         u = o(".third-login-qq"), d = o(".third-login-weixin"), f = o(".third-login-weibo"), p = e("./log"),
         h = (new Date).getTime(), m = "https://urswebzj.nosdn.127.net/webzj_cdn101/message.js",
-        g = "http://shared.有道翻译.com/yd/common-login/yd.account.login.js",
+        g = "http://shared.有道翻译_未完成.com/yd/common-login/yd.account.login.js",
         v = "https://shared.ydstatic.com/fanyi/login/", y = null, b = {
             newCDN: 1,
             version: 3,
             productKey: "01a7b60facc941b59f861101724af7c5",
             product: "youdao_fanyi",
             promark: "MgAgFcA",
-            host: "fanyi.有道翻译.com",
+            host: "fanyi.有道翻译_未完成.com",
             isHttps: 1,
-            cookieDomain: "有道翻译.com",
+            cookieDomain: "有道翻译_未完成.com",
             includeBox: "urs-login-block",
             cssDomain: v,
             cssFiles: "loginStyle.css?v=" + h,
             mode: "float",
-            domains: "vip.126.com,163.com,126.com,有道翻译.com,yodao.com,huihui.cn",
+            domains: "vip.126.com,163.com,126.com,有道翻译_未完成.com,yodao.com,huihui.cn",
             swidth: 320,
             needMobileLogin: 1,
             skin: 0,
@@ -1347,8 +1347,8 @@ this.seajs = {_seajs: this.seajs}, seajs.version = "1.3.1", seajs._util = {}, se
                 l.hide(), c.hide(), o.ajax({
                     xhrFields: {withCredentials: !0},
                     type: "GET",
-                    url: "https://dict.有道翻译.com/login/acc/login",
-                    data: {app: "web", tp: "urscookie", cf: 7, ru: "http://fanyi.有道翻译.com", product: "DICT", show: !0}
+                    url: "https://dict.有道翻译_未完成.com/login/acc/login",
+                    data: {app: "web", tp: "urscookie", cf: 7, ru: "http://fanyi.有道翻译_未完成.com", product: "DICT", show: !0}
                 }).done(function (e) {
                     window.location.reload()
                 }).error(function (e) {
@@ -1919,9 +1919,9 @@ this.seajs = {_seajs: this.seajs}, seajs.version = "1.3.1", seajs._util = {}, se
         _ = p("#docUploadBg"), k = p(".doc-delete"), C = p(".upload__cover"), S = "", E = "",
         j = {pdf: 957 / 4.88, docx: 47 / 2.66}, N = !1;
     x.attr("disabled", !1), x.val("");
-    var A = "https://pdf.有道翻译.com/docview.html";
+    var A = "https://pdf.有道翻译_未完成.com/docview.html";
     if (-1 != location.href.indexOf("type=013")) {
-        A = "https://pdf-test.有道翻译.com/docview.html";
+        A = "https://pdf-test.有道翻译_未完成.com/docview.html";
         var D = p("#docUploadForm").attr("action1");
         p("#docUploadForm").attr("action", D)
     }
@@ -1990,7 +1990,7 @@ this.seajs = {_seajs: this.seajs}, seajs.version = "1.3.1", seajs._util = {}, se
         }, d = function (e) {
             r.ajax({
                 type: "GET",
-                url: "http://impservice.dictapp.有道翻译.com/imp/request.s",
+                url: "http://impservice.dictapp.有道翻译_未完成.com/imp/request.s",
                 data: {
                     req: window.location.href,
                     rnd: (new Date).getTime(),
@@ -1999,7 +1999,7 @@ this.seajs = {_seajs: this.seajs}, seajs.version = "1.3.1", seajs._util = {}, se
                     tn: "text_700_400",
                     width: r(".input__original").width(),
                     height: 400,
-                    ref2: "http://www.有道翻译.com/"
+                    ref2: "http://www.有道翻译_未完成.com/"
                 },
                 dataType: "jsonp",
                 success: function (t) {
@@ -2441,7 +2441,7 @@ this.seajs = {_seajs: this.seajs}, seajs.version = "1.3.1", seajs._util = {}, se
     var n = e("./jquery-1.7"), r = (e("./log"), n(".fanyi__popularize a")), i = function () {
         n.ajax({
             type: "GET",
-            url: "http://impservice.dictapp.有道翻译.com/imp/request.s",
+            url: "http://impservice.dictapp.有道翻译_未完成.com/imp/request.s",
             data: {
                 req: window.location.href,
                 rnd: (new Date).getTime(),
@@ -2450,7 +2450,7 @@ this.seajs = {_seajs: this.seajs}, seajs.version = "1.3.1", seajs._util = {}, se
                 tn: "text_" + n(".input__original").width() + "_18",
                 width: n(".input__original").width(),
                 height: 18,
-                ref2: "http://www.有道翻译.com/"
+                ref2: "http://www.有道翻译_未完成.com/"
             },
             dataType: "jsonp",
             success: function (e) {
@@ -5171,7 +5171,7 @@ this.seajs = {_seajs: this.seajs}, seajs.version = "1.3.1", seajs._util = {}, se
         o = e("./log"), s = {
             getLink: function (e, t) {
                 var n = window.encodeURIComponent(t), r = a.state.type;
-                return "zh-CHS2en" != r && "zh-CHS2ja" != r && "zh-CHS2ko" != r ? "javascript:;" : 1 == e ? "http://dict.有道翻译.com/search?q=" + n + "&keyfrom=fanyi.smartResult" : "javascript:;"
+                return "zh-CHS2en" != r && "zh-CHS2ja" != r && "zh-CHS2ko" != r ? "javascript:;" : 1 == e ? "http://dict.有道翻译_未完成.com/search?q=" + n + "&keyfrom=fanyi.smartResult" : "javascript:;"
             }
         };
     n(".dict__relative").delegate("a", "click", function () {
@@ -5186,7 +5186,7 @@ this.seajs = {_seajs: this.seajs}, seajs.version = "1.3.1", seajs._util = {}, se
                 "javascript:;" == c ? (u = "no-link", i.append('<span class="' + u + '">' + a[l].replace(/\r\n/, "") + "</span>")) : i.append('<a target="_blank" href="' + c + '">' + a[l].replace(/\r\n/, "") + "</a>")
             }
             o ? r.show() : r.hide();
-            var d = "http://dict.有道翻译.com/search?q=" + e + "&keyfrom=new-fanyi.smartResult";
+            var d = "http://dict.有道翻译_未完成.com/search?q=" + e + "&keyfrom=new-fanyi.smartResult";
             n(".dict__more").attr("href", d), n(".dict__more").show()
         } else r.hide()
     }, t.hide = function () {
@@ -5571,7 +5571,7 @@ this.seajs = {_seajs: this.seajs}, seajs.version = "1.3.1", seajs._util = {}, se
                 r[e.toLowerCase()] = 1
             }), !(!r[n] || t.length < 2) && /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/gi.test(e.toLocaleString())
         }, addToFav: function () {
-            t.browser.msie ? window.external.addFavorite("http://fanyi.有道翻译.com/?keyfrom=favorite", "有道翻译 - 免费在线翻译") : alert("请使用Ctrl + D 手动加入收藏")
+            t.browser.msie ? window.external.addFavorite("http://fanyi.有道翻译_未完成.com/?keyfrom=favorite", "有道翻译_未完成 - 免费在线翻译") : alert("请使用Ctrl + D 手动加入收藏")
         }, cookie: function (e, t, n) {
             if (void 0 === t) return function (e) {
                 var t = document.cookie.match(new RegExp("(^| )" + e + "=([^;]*)(;|$)"));
@@ -5667,7 +5667,7 @@ this.seajs = {_seajs: this.seajs}, seajs.version = "1.3.1", seajs._util = {}, se
         }, f = {"zh-CHS2en": "eng", "zh-CHS2ja": "jap", "zh-CHS2ko": "ko", "zh-CHS2fr": "fr"},
         p = {"en2zh-CHS": "eng", "ja2zh-CHS": "jap", "ko2zh-CHS": "ko", "fr2zh-CHS": "fr"}, h = function (e, t, n) {
             var n = n || "fanyi.newweb.index";
-            return "http://tts.有道翻译.com/fanyivoice?word=" + encodeURIComponent(e) + "&le=" + t + "&keyfrom=" + n
+            return "http://tts.有道翻译_未完成.com/fanyivoice?word=" + encodeURIComponent(e) + "&le=" + t + "&keyfrom=" + n
         }, m = function (e) {
             l && "" != c.canPlayType("audio/mpeg") && e ? (c.src = e, c.load(), c.play()) : e && u("fanyivoice") && !0 === jsReady && u("fanyivoice").playVoice(e)
         }, g = function () {

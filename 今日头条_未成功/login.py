@@ -68,5 +68,5 @@ class Login(object):
 
 if __name__ == '__main__':
     login = Login()
-    # login.login()
-    login.get_anc_img()
+    login.login()
+    # login.get_anc_img()
