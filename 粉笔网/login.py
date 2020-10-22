@@ -9,7 +9,7 @@ import requests
 import re
 
 
-class Login():
+class Login(object):
 
     def __init__(self, user, pwd):
         self.sess = requests.session()
