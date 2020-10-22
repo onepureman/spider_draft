@@ -1,3 +1,9 @@
+"""
+Base_Url: https://www.migu.cn/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import requests
 import js2py
 import execjs
@@ -637,7 +643,7 @@ function getpwd(pwd) {
 
 """
 
-en_password = execjs.compile(js_rsa).call("getpwd", "jing19950110")
+en_password = execjs.compile(js_rsa).call("getpwd", "")  # TODO: 输入密码
 
 finger = execjs.compile(js_rsa).call("rsaFingerprint")
 fingerPrintDetail = finger["details"]

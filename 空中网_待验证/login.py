@@ -1,3 +1,10 @@
+"""
+Base_Url: http://www.kongzhong.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import execjs
 from requests import session
 import time
@@ -83,5 +90,5 @@ class Login(object):
 
 
 if __name__ == '__main__':
-    login = Login("18513606786", "jing1995")
+    login = Login("", "")  # TODO: 输入 账号 密码
     login.login()

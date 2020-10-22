@@ -11,7 +11,7 @@ supportDynamicPwd: true
 supportBind2FA: true
 authorizeDevice:
 loginType:
-uid: 18513606786
+uid:
 domain:
-password: Jing1995.
+password:
 action:login:

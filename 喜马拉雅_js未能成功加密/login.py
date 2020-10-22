@@ -1,3 +1,9 @@
+"""
+Base_Url: https://www.ximalaya.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 import requests
 
@@ -2937,5 +2943,5 @@ version: 2.9.0
 if __name__ == '__main__':
     user = ""
     pwd = "222"
-    login = Login(user, pwd)
+    login = Login(user, pwd)  # TODO: 输入 账号 密码
     login.login_()

@@ -1,3 +1,9 @@
+"""
+Base_Url: https://www.meizu.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 import requests
 
@@ -24,5 +30,5 @@ function getpwd(pwd){
 }
 """
 
-pwd = execjs.compile(js_).call("getpwd", "jjjjjjjj")
+pwd = execjs.compile(js_).call("getpwd", "jjjjjjjj")  # TODO: 输入 账号 密码
 print(pwd)

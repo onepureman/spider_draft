@@ -1,3 +1,9 @@
+"""
+Base_Url: https://www.taobao.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 import requests
 import re
@@ -640,6 +646,6 @@ class Login(object):
 
 
 if __name__ == '__main__':
-    login = Login("哥替你出头", "jing19950110..")
+    login = Login("", "")  # TODO: 输入 账号 密码
     login_sc = login.login_()
     print(login_sc)

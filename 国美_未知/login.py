@@ -1,3 +1,10 @@
+"""
+Base_Url: https://www.gome.com.cn/
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import requests
 import execjs
 from pprint import pprint
@@ -3578,5 +3585,5 @@ class Login():
 if __name__ == '__main__':
     user = "11122222"
     pwd = "22211111"
-    login = Login(user, pwd)
+    login = Login(user, pwd)  # TODO: 输入 账号 密码
     login.login_()

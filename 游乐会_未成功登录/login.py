@@ -1,3 +1,12 @@
+"""
+
+Base_Url: http://uhg.9you.com/
+ & https://passport.9you.com/login/ulogin.php?callback=loginCallbackNew&denyCallbackURL=http://uhg.9you.com/vip/Member/sso_deny&sid=7d769f33d6ae19c4fddf437dbf418309
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import execjs
 import requests
 
@@ -213,10 +222,9 @@ class Login():
 
 
 if __name__ == '__main__':
-    user = "18513606786"
-    pwd = "jing1995"
+    user = ""
+    pwd = ""
 
-
-    login = Login(user, pwd)
+    login = Login(user, pwd)  # TODO: 输入 账号 密码
 
     login.login_()

@@ -1,4 +1,10 @@
 
+"""
+Base_Url: https://www.37.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import requests
 import execjs
 
@@ -50,13 +56,13 @@ function td(a) {
 }
 
 """
-passwd = execjs.compile(js_).call("td", "jing1995")
+passwd = execjs.compile(js_).call("td", "")   # TODO: 输入密码
 
 
 data = {
 "callback": "jQuery18307600618330276601_1601282584636",
 "action": "login",
-"login_account": "jing_1995",
+"login_account": "",  # TODO: 输入账号
 "password": passwd,
 "ajax": "0",
 "remember_me": "1",
@@ -72,4 +78,5 @@ data = {
 
 url = "https://my.37.com/api/login.php?callback=jQuery18306406318829314788_1601282675051&action=login&login_account=jing_1995&password={}&ajax=0&remember_me=1&save_state=1&ltype=1&tj_from=100&s=1&tj_way=1&_=1601282679088".format(passwd)
 r = requests.get(url)
+print(r.status_code)
 print(r.content.decode())

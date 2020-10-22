@@ -1,3 +1,10 @@
+"""
+Base_Url: https://www.360.cn/
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import execjs
 import requests
 from requests import Session
@@ -169,7 +176,7 @@ js_ = """
             return t ? q(t, e) : g(e)
         }
 """
-pwd = execjs.compile(js_).call("md5", "jing1995")
+pwd = execjs.compile(js_).call("md5", "")  # TODO: 输入密码
 
 
 def load_data():

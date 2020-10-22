@@ -1,3 +1,11 @@
+"""
+
+Base_Url: https://www.tianyancha.com/brand/bc809591510
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import requests
 from pprint import pprint
 from requests import session
@@ -51,9 +59,9 @@ class GetData(object):
 
 
 if __name__ == '__main__':
-    user = "景永强"
-    pwd = "jing1995"
-    get_data = GetData(user, pwd)
+    user = ""
+    pwd = ""
+    get_data = GetData(user, pwd)  # TODO: 输入 账号 密码
     get_data.login_()
 
 

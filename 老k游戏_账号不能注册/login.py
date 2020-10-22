@@ -1,3 +1,9 @@
+"""
+Base_Url: http://web.lkgame.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 import requests
 from pprint import pprint
@@ -479,7 +485,7 @@ class Login():
             return [l, k]
         } 
         """
-        u_p = execjs.compile(js_pwd).call("get_pwd_u", "222", "3333")
+        u_p = execjs.compile(js_pwd).call("get_pwd_u", "222", "3333")   # TODO: 输入 账号 密码
         return u_p
 
     def get_captcha(self):

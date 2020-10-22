@@ -1,3 +1,9 @@
+"""
+Base_Url: https://www.fang.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 import js2py
 
@@ -319,8 +325,8 @@ headers = {
 }
 
 data = {
-"uid": "18513606786",
-"pwd": execjs.compile(one_js).call("getpwd", "jing1995"),
+"uid": "",  # TODO: 输入 账号 密码
+"pwd": execjs.compile(one_js).call("getpwd", ""),  # TODO: 输入 账号 密码
 "Service": "soufun-passport-web",
 "AutoLogin": "1",
 }

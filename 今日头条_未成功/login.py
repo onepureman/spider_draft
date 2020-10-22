@@ -1,3 +1,9 @@
+"""
+Base_Url: https://www.toutiao.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 import time
 import requests
@@ -46,8 +52,8 @@ class Login(object):
         return r
 
     def login(self):
-        user = self.anc("18513606786")
-        pwd = self.anc("Jing1995.")
+        user = self.anc("")  # TODO: 输入账号
+        pwd = self.anc("")   # TODO: 输入密码
         print(user, pwd)
 
         data = {

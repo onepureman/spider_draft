@@ -1,3 +1,10 @@
+
+"""
+Base_Url: http://www.iapps.im/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import requests
 
 import execjs
@@ -668,7 +675,7 @@ def get_password(password):
 
 if __name__ == '__main__':
     use = ""
-    password = ""
+    password = ""  # TODO: 输入 账号 密码
 
     pwd = get_password(password)
 

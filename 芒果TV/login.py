@@ -1,5 +1,11 @@
+"""
+Base_Url: https://www.mgtv.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import requests
-from    pprint import pprint
+from pprint import pprint
 
 
 
@@ -15,6 +21,9 @@ def load_data():
 
 data = load_data()
 pprint(data)
+
+data["username"] = ""
+data["password"] = ""    # TODO: 输入 账号 密码
 
 post_url = "https://nuc.api.mgtv.com/v1/Login"
 r = requests.post(post_url, data=data)

@@ -1,3 +1,9 @@
+"""
+Base_Url: https://shop.yidai.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 import requests
 
@@ -844,7 +850,7 @@ if __name__ == '__main__':
     user = "11111"
     password = "22222"
 
-    login = Login(user, password)
+    login = Login(user, password)  # TODO: 输入 账号 密码
     login.login_()
 
 

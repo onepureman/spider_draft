@@ -1,3 +1,10 @@
+"""
+Base_Url: http://www.dianping.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import execjs
 import requests
 
@@ -2727,7 +2734,7 @@ if __name__ == '__main__':
     user = "1111"
     pwd = "2222"
 
-    login = Login(user, pwd)
+    login = Login(user, pwd)  # TODO: 输入 账号 密码
 
     login.login_()
 

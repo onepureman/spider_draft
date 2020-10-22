@@ -1,3 +1,9 @@
+"""
+Base_Url: https://www.douyu.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 import requests
 
@@ -380,5 +386,5 @@ return CryptoJS.MD5(pwd).toString()
 """
 
 
-pwd = execjs.compile(js_).call("getpwd","11111")
+pwd = execjs.compile(js_).call("getpwd","11111")  # TODO: 输入 账号 密码
 print(pwd)

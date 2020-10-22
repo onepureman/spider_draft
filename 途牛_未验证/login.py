@@ -1,3 +1,9 @@
+"""
+Base_Url: https://www.tuniu.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 import requests
 from requests import session
@@ -243,5 +249,5 @@ class Login(object):
 
 
 if __name__ == '__main__':
-    login = Login("18513606786", "jing1995")
+    login = Login("", "")   # TODO: 输入 账号 密码
     login.login()

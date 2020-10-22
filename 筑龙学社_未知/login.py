@@ -1,3 +1,9 @@
+"""
+Base_Url: http://www.kongzhong.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 import requests
 from requests import session
@@ -2809,8 +2815,8 @@ class Login(object):
 
 if __name__ == '__main__':
 
-    user = "18513606786"
-    pwd = "jing1995"
+    user = ""
+    pwd = ""
 
-    login = Login(user, pwd)
+    login = Login(user, pwd)   # TODO: 输入 账号 密码
     login.login()

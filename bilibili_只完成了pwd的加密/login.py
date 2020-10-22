@@ -1,3 +1,9 @@
+"""
+Base_Url: https://www.bilibili.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 
 
@@ -2839,5 +2845,5 @@ encryptPassword=function getpwd(e){
             }
 """
 
-pwd = execjs.compile(js_).call("encryptPassword", "222")
+pwd = execjs.compile(js_).call("encryptPassword", "")   # TODO: 输入密码
 print(pwd)

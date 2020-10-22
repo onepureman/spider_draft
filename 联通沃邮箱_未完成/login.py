@@ -1,3 +1,10 @@
+"""
+Base_Url: https://mail.wo.cn/
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import requests
 from pprint import pprint
 from requests import Session
@@ -19,6 +26,8 @@ def load_data():
 
 
 data = load_data()
+data["uid"] = ""
+data["password"] = ""   # TODO: 输入 账号 密码
 
 url = "https://mail.wo.cn/coremail/index.jsp?cus=1"
 

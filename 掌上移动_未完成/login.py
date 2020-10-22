@@ -2865,7 +2865,7 @@ function decrypts(word){
 }
 """
 
-ps_ = execjs.compile(js_).call("encrypt", "264271")
+ps_ = execjs.compile(js_).call("encrypt", "264271")  # TODO: 输入 账号 密码
 
 
 def load_data():

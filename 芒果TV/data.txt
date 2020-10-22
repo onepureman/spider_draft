@@ -4,7 +4,7 @@ appVersion: pcweb-6.3.0.gray
 dname:
 src: intelmgtv
 invoker: pcweb
-username: 18513606786
-password: jing1995
+username:
+password:
 smscode: 86
 captcha:

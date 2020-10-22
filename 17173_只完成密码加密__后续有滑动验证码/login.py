@@ -1,3 +1,8 @@
+"""
+Base_Url: https://www.17173.com/
+Author: jing
+Modify: 2020/10/22
+"""
 import execjs
 import requests
 
@@ -159,7 +164,7 @@ return hexMd5(pwd)
 }
 
 """
-        pwd = execjs.compile(js_pwd).call("getpwd", "1111")
+        pwd = execjs.compile(js_pwd).call("getpwd", "1111")   # TODO: 输入密码
         return pwd
 
     def login_(self):

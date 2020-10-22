@@ -1,3 +1,10 @@
+"""
+Base_Url: https://www.163.com/?referFrom=undefined
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import execjs
 import requests
 
@@ -1761,6 +1768,6 @@ var RSA = {
 
 
 if __name__ == '__main__':
-    login = Login("11111", "22222")
+    login = Login("11111", "22222")  # TODO: 输入 账号 密码
     login.login_()
     "cb46b23695009bd097e48a1d057f6cc1"

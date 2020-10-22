@@ -1,3 +1,10 @@
+"""
+Base_Url: https://www.yy.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import execjs
 import requests
 
@@ -755,7 +762,7 @@ function getpwd(pwd){
 
 
 """
-pwd = execjs.compile(js).call("getpwd", "1111")
+pwd = execjs.compile(js).call("getpwd", "1111")  # TODO: 输入密码
 
 print(pwd)
 

@@ -1,3 +1,9 @@
+"""
+Base_Url: https://www.huya.com/?ptag=gouzai&rso=huya_h5_395
+Author: jing
+Modify: 2020/10/22
+"""
+
 import execjs
 import requests
 
@@ -2560,5 +2566,5 @@ js ='''
                   , n = (e >> 16) + (t >> 16) + (o >> 16);
                 return n << 16 | 65535 & o}
                 }"""
-pwd = execjs.compile(js2).call("222")
+pwd = execjs.compile(js2).call("222")    # TODO: 输入 账号 密码
 print(pwd)

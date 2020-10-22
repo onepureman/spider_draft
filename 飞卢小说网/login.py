@@ -1,3 +1,10 @@
+"""
+Base_Url: https://b.faloo.com/
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import execjs
 from requests import session
 import time
@@ -272,7 +279,7 @@ class Login(object):
 
 
 if __name__ == '__main__':
-    login = Login("user", "pwd")
+    login = Login("user", "pwd")  # TODO: 输入 账号 密码
 
     login.login_()
 

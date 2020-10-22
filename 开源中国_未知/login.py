@@ -1,3 +1,10 @@
+"""
+Base_Url: https://www.oschina.net/
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import execjs
 from pprint import pprint
 import requests
@@ -230,7 +237,7 @@ return CryptoJS.SHA1(pd).toString()
 
 """
 
-# pwd = execjs.compile(js_).call("getpwd", "jjj")
+# pwd = execjs.compile(js_).call("getpwd", "jjj")  # TODO: 输入 账号 密码
 # print(pwd)
 
 

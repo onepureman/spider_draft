@@ -1,3 +1,10 @@
+"""
+Base_Url: http://www.39.net/
+Author: jing
+Modify: 2020/10/22
+"""
+
+
 import requests
 import execjs
 from pprint import pprint
@@ -10,8 +17,8 @@ function getpwd(a) {
         return e
     }
 """
-user = execjs.compile(js_).call("getpwd", "18513606786")
-pwd = execjs.compile(js_).call("getpwd", "jing1995")
+user = execjs.compile(js_).call("getpwd", "")  # TODO: 输入账号
+pwd = execjs.compile(js_).call("getpwd", "")   # TODO: 输入密码
 
 def load_data():
     data = {}
