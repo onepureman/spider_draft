@@ -1,3 +1,9 @@
+"""
+Base_Url: https://www.youzan.com/
+Author: jing
+Modify: 2020/10/22
+
+"""
 
 
 import execjs
