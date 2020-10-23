@@ -7,6 +7,7 @@ Modify: 2020/10/22
 
 import execjs
 import requests
+import time
 
 
 class Login(object):
@@ -14,6 +15,41 @@ class Login(object):
         self.user = user
         self.pwd = pwd
         self.sess = requests.session()
+        self.sess.headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+        }
+
+    def load_data(self, path):
+        data = {}
+        with open(path, "rt", encoding="utf-8") as f:
+            read = f.readlines()
+            for line in read:
+                split_ = line.split(":")
+                data[split_[0]] = ":".join(split_[1:]).replace("\n", "").replace(" ", "")
+        return data
+
+    def get_un_data(self):
+        self.sess.headers = {
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "zh-CN,zh;q=0.9",
+            "Cache-Control": "max-age=0",
+            "Connection": "keep-alive",
+            "Host": "dl.reg.163.com",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+
+        }
+        rtid = ""
+        gt_un_url = "https://dl.reg.163.com/dl/gt?" \
+              "un=" + self.user + \
+              "&pkid=MODXOXd&pd=163" \
+              "&channel=0" \
+              "&topURL=https%3A%2F%2Fwww.163.com%2F%3FreferFrom%3Dundefined" \
+              "&rtid=" + rtid +  \
+              "&nocache=" + str(int(time.time()*1000))
+        print(gt_un_url)
+        response = self.sess.get(gt_un_url).json()
+        print(response)
 
     def get_pwd(self):
 
@@ -1764,10 +1800,13 @@ var RSA = {
         print(pwd)
 
     def login_(self):
-        self.get_pwd()
+        res = self.sess.get("https://www.163.com/?referFrom=undefined")
+        print(res.content.decode("gbk"))
+        print(self.sess.cookies)
+        # self.get_pwd()
+        # self.get_un_data()
 
 
 if __name__ == '__main__':
-    login = Login("11111", "22222")  # TODO: 输入 账号 密码
+    login = Login("152458754@163.com", "22222")  # TODO: 输入 账号 密码
     login.login_()
-    "cb46b23695009bd097e48a1d057f6cc1"
