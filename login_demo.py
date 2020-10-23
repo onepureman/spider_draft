@@ -6,6 +6,7 @@ Modify:
 
 import execjs
 import requests
+from pprint import pprint
 
 
 class Login(object):
@@ -14,6 +15,7 @@ class Login(object):
         self.user = user
         self.pwd = pwd
         self.sess = requests.session()
+        self.login_url = ""
 
     def get_pwd(self):
 
@@ -33,7 +35,7 @@ class Login(object):
 
     def login_(self):
         pwd = self.get_pwd()
-
+        print(pwd)
 
 if __name__ == '__main__':
     user = ""

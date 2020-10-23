@@ -30,14 +30,8 @@ class Login(object):
 
     def get_un_data(self):
         self.sess.headers = {
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Accept-Language": "zh-CN,zh;q=0.9",
-            "Cache-Control": "max-age=0",
-            "Connection": "keep-alive",
-            "Host": "dl.reg.163.com",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
 
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
         }
         rtid = ""
         gt_un_url = "https://dl.reg.163.com/dl/gt?" \
@@ -48,7 +42,7 @@ class Login(object):
               "&rtid=" + rtid +  \
               "&nocache=" + str(int(time.time()*1000))
         print(gt_un_url)
-        response = self.sess.get(gt_un_url).json()
+        response = self.sess.get(gt_un_url)
         print(response)
 
     def get_pwd(self):
@@ -1800,11 +1794,11 @@ var RSA = {
         print(pwd)
 
     def login_(self):
-        res = self.sess.get("https://www.163.com/?referFrom=undefined")
-        print(res.content.decode("gbk"))
+        self.sess.get("https://nex.163.com/q?app=7BE0FC82&c=homepage&l=11&site=netease&affiliate=homepage&cat=homepage&type=column1200x125_960100&location=1&cb=jsonp_0088962116615948")
         print(self.sess.cookies)
+        self.get_un_data()
+        # print(res.headers)
         # self.get_pwd()
-        # self.get_un_data()
 
 
 if __name__ == '__main__':
