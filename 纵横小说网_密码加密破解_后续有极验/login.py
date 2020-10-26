@@ -17,10 +17,7 @@ class Login(object):
 
     def get_pwd(self):
 
-        js_pwd = """
-        
-
-
+        js_pwd = r"""
     function s(i, t, e, s) {
         this.e = l(i),
         this.d = l(t),
@@ -344,17 +341,12 @@ class Login(object):
       , O = new Array("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f")
       , Q = new Array(0,32768,49152,57344,61440,63488,64512,65024,65280,65408,65472,65504,65520,65528,65532,65534,65535)
       , U = new Array(0,1,3,7,15,31,63,127,255,511,1023,2047,4095,8191,16383,32767,65535);
-    function(i, t, e) {
-       
-    }
 
-        
+
         
 function getpwd(pwd){
- return n(new s("10001","","a69ae1dd84777e7d40626a29a76f74c176806bb71ce120b259848a730664340bfa550d6fb807b4fe7a2e2a89478ca2f3ea56793440c70b7f3c2017add92e8661924adbda06bff326828ebdc8bef6d094118d64da2eec815812fb70f16aafc73229aa1734727d0a4df65f1c1a2a61946d00a37376822cb30b87127e15f82d68d1"), encodeURIComponent(pwd))
-
+    return n(new s("10001","","a69ae1dd84777e7d40626a29a76f74c176806bb71ce120b259848a730664340bfa550d6fb807b4fe7a2e2a89478ca2f3ea56793440c70b7f3c2017add92e8661924adbda06bff326828ebdc8bef6d094118d64da2eec815812fb70f16aafc73229aa1734727d0a4df65f1c1a2a61946d00a37376822cb30b87127e15f82d68d1"), encodeURIComponent(pwd))
 }
-
         """
 
         pwd = execjs.compile(js_pwd).call("getpwd", self.pwd)

@@ -1,0 +1,12 @@
+gt: f5c10f395211c77e386566112c6abf21
+challenge: 2f7aa1710f8f6d28b50e17b996d9720c
+product: popup
+offline: false
+protocol: https://
+beeline: /static/js/beeline.1.0.1.js
+type: slide
+maze: /static/js/maze.1.0.1.js
+pencil: /static/js/pencil.1.0.3.js
+voice: /static/js/voice.1.2.0.js
+path: /static/js/geetest.6.0.9.js
+callback: geetest_1603695937791

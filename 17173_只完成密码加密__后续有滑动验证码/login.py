@@ -172,3 +172,6 @@ return hexMd5(pwd)
         print(pwd)
 
 
+if __name__ == '__main__':
+    login = Login("222", "333")
+    login.login_()
