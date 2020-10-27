@@ -1,7 +1,7 @@
 """
-Base_Url:
-Author:
-Modify:
+Base_Url:http://www.fun.tv/
+Author:jing
+Modify:2020/10/27
 """
 
 import execjs
