@@ -4,11 +4,28 @@ Author: jing
 Modify: 2020/10/22
 """
 
+import time
 import execjs
-import js2py
+import requests
+from pprint import pprint
 
-one_js = """
-    function setMaxDigits(n) {
+
+class Login(object):
+
+    def __init__(self, user, pwd):
+        self.user = user
+        self.pwd = pwd
+        self.sess = requests.session()
+        self.sess.headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+            "Referer": "https://passport.fang.com/?backurl=http%3a%2f%2fmy.fang.com%2f"
+            }
+        self.login_url = "https://passport.fang.com/login.api"
+
+    def get_pwd(self):
+        js_pwd = """
+
+         function setMaxDigits(n) {
         maxDigits = n;
         ZERO_ARRAY = new Array(maxDigits);
         for (var t = 0; t < ZERO_ARRAY.length; t++) ZERO_ARRAY[t] = 0;
@@ -315,28 +332,37 @@ one_js = """
     var key_to_encode = new RSAKeyPair("010001", "", "978C0A92D2173439707498F0944AA476B1B62595877DD6FA87F6E2AC6DCB3D0BF0B82857439C99B5091192BC134889DFF60C562EC54EFBA4FF2F9D55ADBCCEA4A2FBA80CB398ED501280A007C83AF30C3D1A142D6133C63012B90AB26AC60C898FB66EDC3192C3EC4FF66925A64003B72496099F4F09A9FB72A2CF9E4D770C41");
     return encryptedString(key_to_encode, password)
     }
-"""
 
-# a = js2py.eval_js(one_js)
 
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
-    "Referer": "https://passport.fang.com/?backurl=http%3a%2f%2fmy.fang.com%2f"
-}
+        """
 
-data = {
-"uid": "",  # TODO: 输入 账号 密码
-"pwd": execjs.compile(one_js).call("getpwd", ""),  # TODO: 输入 账号 密码
-"Service": "soufun-passport-web",
-"AutoLogin": "1",
-}
+        pwd = execjs.compile(js_pwd).call("getpwd", self.pwd)
+        return pwd
 
-url = "https://passport.fang.com/login.api"
+    def login_(self):
+        pwd = self.get_pwd()
+        print(pwd)
+        data = {
+            "uid": self.user,
+            "pwd": pwd,
+            "Service": "soufun-passport-web",
+            "AutoLogin": "1",
+        }
 
-import requests
+        a = requests.post(self.login_url, data=data)
+        print(a.content.decode())
 
-a = requests.post(url, data=data, headers=headers)
-print(a.content.decode())
+
+if __name__ == '__main__':
+    user = ""
+    pwd = "222222"
+
+    login = Login(user, pwd)  # TODO: 输入账号&密码
+    login.login_()
+
+
+
+
 
 
 

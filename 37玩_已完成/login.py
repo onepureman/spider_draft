@@ -5,10 +5,22 @@ Author: jing
 Modify: 2020/10/22
 """
 
-import requests
+import time
 import execjs
+import requests
+from pprint import pprint
 
-js_ = """
+
+class Login(object):
+
+    def __init__(self, user, pwd):
+        self.user = user
+        self.pwd = pwd
+        self.sess = requests.session()
+        self.login_url = ""
+
+    def get_pwd(self):
+        js_pwd = """
 var ch = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 function __rsa(str) {
     var out, i, len;
@@ -40,7 +52,7 @@ function __rsa(str) {
     }
     return out
 }
-function td(a) {
+function getpwd(a) {
     var maxPos = ch.length - 2
       , w = [];
     for (i = 0; i < 15; i++) {
@@ -55,28 +67,30 @@ function td(a) {
     return __rsa(w.join(""))
 }
 
-"""
-passwd = execjs.compile(js_).call("td", "")   # TODO: 输入密码
 
 
-data = {
-"callback": "jQuery18307600618330276601_1601282584636",
-"action": "login",
-"login_account": "",  # TODO: 输入账号
-"password": passwd,
-"ajax": "0",
-"remember_me": "1",
-"save_state": "1",
-"ltype": "1",
-"tj_from": "100",
-"s": "1",
-"tj_way": "1",
-"_": "1601282594970",
+        """
+
+        pwd = execjs.compile(js_pwd).call("getpwd", self.pwd)
+        return pwd
+
+    def login_(self):
+        pwd = self.get_pwd()
+
+        url = "https://my.37.com/api/login.php?callback=jQuery18306406318829314788_1601282675051&action=login&login_account={}&password={}&ajax=0&remember_me=1&save_state=1&ltype=1&tj_from=100&s=1&tj_way=1&_=1601282679088".format(
+            self.user,pwd)
+        r = requests.get(url)
+        print(r.status_code)
+        print(r.content.decode())
 
 
-}
+if __name__ == '__main__':
+    user = ""
+    pwd = "222222"
 
-url = "https://my.37.com/api/login.php?callback=jQuery18306406318829314788_1601282675051&action=login&login_account=jing_1995&password={}&ajax=0&remember_me=1&save_state=1&ltype=1&tj_from=100&s=1&tj_way=1&_=1601282679088".format(passwd)
-r = requests.get(url)
-print(r.status_code)
-print(r.content.decode())
+    login = Login(user, pwd)  # TODO: 输入账号&密码
+    login.login_()
+
+
+
+

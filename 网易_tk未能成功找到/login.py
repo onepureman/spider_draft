@@ -43,7 +43,7 @@ class Login(object):
               "&nocache=" + str(int(time.time()*1000))
         print(gt_un_url)
         response = self.sess.get(gt_un_url)
-        print(response)
+        print(response.content.decode())
 
     def get_pwd(self):
 

@@ -727,5 +727,7 @@ function sss() {
 // console.log(sign);
 """
 
-sign = execjs.compile(js_).call("sss")
+sign = execjs.compile(js_, cwd=r'E:\node\node_modules\npm\node_modules').call("sss")
 print(sign)
+
+"_02B4Z6wo00f018TSkFAAAIBAOy1vrzFBiN.E0JTAAK6598"

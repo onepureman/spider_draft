@@ -8,6 +8,7 @@ import execjs
 import requests
 from pprint import pprint
 
+
 class Login(object):
 
     def __init__(self, user, pwd):
