@@ -78,7 +78,7 @@ class Login(object):
         
         window.document = document;
         
-         const {JSEncrypt} = require("E:/pycharmproject/study_own/js_study/金牛理财/jsencrypt.js")
+         const {JSEncrypt} = require("E:/pycharmproject/study_own/js_study/金牛理财_已完成/jsencrypt.js")
         
         
         function getpwd(pwd){

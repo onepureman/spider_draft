@@ -47,5 +47,4 @@ var params = {
 };
 Object.assign(window,params);
 
-
 window.document = document;

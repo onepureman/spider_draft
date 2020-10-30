@@ -1,0 +1,14 @@
+username: 1054545416
+password: 794d5534bfb5032a1fae5058b7d5d66428e1adb90e0e26e7e0cabe25245df934b27d578378cbf6434e7b2a74a128c7f39b55244d14633a98dfab729fc80349ca6c4addad10a3ef81112eb94738ba48ed54581b72e849fc6eae1eee97ba37f8b15393468ae7fd244b66a5ee2cc832c9b6e4e2abb61f77a54b2c81c15c5efe3c48
+token: Whck-x2Aw2YAQAQIicbrYjovgKHZmPl0
+source: 58-homepage-pc
+path: https%3A%2F%2Fbj.58.com%2F%3Fpts%3D1604039969308
+domain: 58.com
+finger2: zh-CN|24|1.5|12|2560_1440|2560_1400|-480|1|1|1|undefined|1|unknown|Win32|unknown|20|false|false|false|false|false|0_false_false|d41d8cd98f00b204e9800998ecf8427e|e3ae0e04402d1d2f7aa0d5ddc69e021f
+isremember: false
+autologin: false
+isredirect: false
+psdk-d: jsdk
+psdk-v: 1.0.6
+fingerprint: imkdQ0ok8DpDLN8P5LIOLjlKPuSQBcq0
+callback: SDK_CALLBACK_FUN.successFun
