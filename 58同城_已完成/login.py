@@ -10,6 +10,7 @@ import requests
 from pprint import pprint
 import re
 
+
 class Login(object):
 
     def __init__(self, user, pwd):

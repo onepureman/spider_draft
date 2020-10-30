@@ -1,0 +1,13 @@
+channel: 0
+d: 10
+domains: "163.com,126.com"
+l: 0
+pd: mail126
+pkid: TVNAeBP
+pw: YJTBzFz+9DFlQNt6KVKv2EoI4GCYgY/JrhreQ1lYaUxyyznTdhvMsz21xZoDnBWUMPB2jmSpz77acOFVXrrrowxTgy4Lo+SAvJ2xIqIJeQuWXlwwQhgpRRj11zQJwC2zIblx26s25dFJaGbDfbHel8IAm/H9pH99f5MjruqEr0E=
+pwdKeyUp: 1
+rtid: RjVS0z92wTk1bfyBDWpPLARgLYJNbdQD
+t: 1604045358847
+tk: 4809fb6d34306e58ef4ed931adbc629f
+topURL: https://email.163.com/?utm_source=baidu1
+un: 12578432122@126.com
