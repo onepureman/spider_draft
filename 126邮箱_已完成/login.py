@@ -44,29 +44,25 @@ class Login(object):
         return data
 
     def login_(self):
-        # # 加载cookies
-        # self.sess.get(
-        #     "https://passport.126.com/dl/ini?pd=mail126&pkid=TVNAeBP&pkht=email.163.com&channel=0&topURL=https%3A%2F%2Femail.163.com%2F%3Futm_source%3Dbaidu1&rtid=myPP7bk70x1vvyiQ4NlaLybqHKRLjXxi&nocache=1604044910172")
-        #
-        # tk = self._get_tk()
-        # data = self.load_data("data.txt")
-        # data["tk"] = tk
-        # data["un"] = self.user
-        # data["t"] = str(int(time.time()*1000))
+        # 加载cookies
+        self.sess.get(
+            "https://passport.126.com/dl/ini?pd=mail126&pkid=TVNAeBP&pkht=email.163.com&channel=0&topURL=https%3A%2F%2Femail.163.com%2F%3Futm_source%3Dbaidu1&rtid=myPP7bk70x1vvyiQ4NlaLybqHKRLjXxi&nocache=1604044910172")
+
+        tk = self._get_tk()
+        data = self.load_data("data.txt")
+        data["tk"] = tk
+        data["un"] = self.user
+        data["t"] = str(int(time.time()*1000))
 
         pwd = self.get_pwd()
-        print(pwd)
-        # data["pw"] = pwd
 
-        # res = self.sess.post(self.login_url, data=json.dumps(data))
-        # print(res)
-
-
+        data["pw"] = pwd
+        res = self.sess.post(self.login_url, json=data)
 
 
 if __name__ == '__main__':
-    user = "125784321@126.com"
-    pwd = "222222"
+    user = ""
+    pwd = ""
 
     login = Login(user, pwd)  # TODO: 输入账号&密码
     login.login_()
