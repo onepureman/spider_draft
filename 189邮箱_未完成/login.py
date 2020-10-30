@@ -1,7 +1,7 @@
 """
-Base_Url:
-Author:
-Modify:
+Base_Url:https://webmail30.189.cn/w2/
+Author:jing
+Modify:2020/10/30
 """
 
 import time
