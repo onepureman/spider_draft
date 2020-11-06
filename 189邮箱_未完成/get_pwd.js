@@ -2795,3 +2795,4 @@ var JSEncrypt = JSEncryptExports.JSEncrypt, RSA_Pwd = {
         this.getRsaFuc(!0)
     }
 }
+RSA_Pwd.init("189mail");

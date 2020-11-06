@@ -19,18 +19,8 @@ class Login(object):
         self.login_url = ""
 
     def get_pwd(self):
-
-        js_pwd = """
-        
-        function getpwd(pwd){
-        
-        
-        
-        }
-        
-        
-        """
-
+        with open('./get_pwd.js', encoding='utf-8') as f:
+            js_pwd = f.read()
         pwd = execjs.compile(js_pwd).call("getpwd", self.pwd)
         return pwd
 
