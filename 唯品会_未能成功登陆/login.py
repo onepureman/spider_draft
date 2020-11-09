@@ -17,6 +17,8 @@ class Login(object):
         self.login_url = "https://passport.vip.com/login"
         self.sess = requests.session()
         self.sess.headers = {
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "zh-CN,zh;q=0.9",
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
         }
 
@@ -209,7 +211,7 @@ class Login(object):
         return pwd
 
     def login_(self):
-        self.sess.get("https://www.vip.com/")
+        self.sess.get("https://passport.vip.com/login")
         pwd = self.get_pwd()
         data = {
             "loginName": self.user,
@@ -219,28 +221,20 @@ class Login(object):
             "captchaId": "",
             "captchaTicket": "",
         }
-        self.sess.headers = {
+        self.sess.headers["referer"] = "https://passport.vip.com/login"
+        self.sess.headers["Origin"] = "https://passport.vip.com"
+        self.sess.headers["Host"] = "passport.vip.com"
+        self.sess.headers["Connection"] = "keep-alive"
 
-            # "accept": "application/json, text/javascript, */*; q=0.01",
-            # "accept-encoding": "gzip, deflate, br",
-            # "accept-language": "zh-CN,zh;q=0.9",
-            # "content-length": "110",
-            # "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-            # "origin": "https://passport.vip.com",
-            # # "referer": "https://passport.vip.com/login?src=https%3A%2F%2Fwww.vip.com%2F",
-            # "sec-fetch-mode": "cors",
-            # "sec-fetch-site": "same-origin",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
-            # "x-requested-with": "XMLHttpRequest",
-
-        }
-
-        response = self.sess.post(self.login_url, data=json.dumps(data))
-
+        response = self.sess.post(self.login_url, data=data)
         print(response.content.decode())
 
-        response2 = self.sess.get("https://safe.vip.com/profile/safeCenter?callback=getAccountSafeInfo&_=1603272668032")
-        print(response2.content.decode())
+
+        #
+        # print(response.content.decode())
+        #
+        # response2 = self.sess.get("https://safe.vip.com/profile/safeCenter?callback=getAccountSafeInfo&_=1603272668032")
+        # print(response2.content.decode())
 
 
 if __name__ == '__main__':
