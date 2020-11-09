@@ -1,24 +1,6 @@
-"""
-Base_Url: http://www.dianping.com/
-Author: jing
-Modify: 2020/10/22
-"""
-
-
-import execjs
-import requests
-
-
-class Login(object):
-
-    def __init__(self, user, pwd):
-        self.user = user
-        self.pwd = pwd
-        self.sess = requests.session()
-
-    def get_pwd(self):
-        js_pwd = """
-            n = function(t) {
+navigator={};window=this;
+var JSEncrypt = {};
+(function(t) {
             function e(t, e, i) {
                 null != t && ("number" == typeof t ? this.fromNumber(t, e, i) : null == e && "string" != typeof t ? this.fromString(t, 256) : this.fromString(t, e))
             }
@@ -2124,8 +2106,7 @@ class Login(object):
                     i > 100 && (e = t + 100);
                     for (var r = t; r < e; ++r)
                         n += this.hexByte(this.get(r));
-                    return i > 100 && (n += "…"),
-                    n
+                    return n
                 }
                 ,
                 e.prototype.parseOID = function(t, e) {
@@ -2232,7 +2213,7 @@ class Login(object):
                         if (null !== this.sub)
                             return "(" + this.sub.length + " elem)";
                         var r = this.stream.parseStringISO(i, i + Math.min(n, 100));
-                        return this.reSeemsASCII.test(r) ? r.substring(0, 200) + (r.length > 200 ? "…" : "") : this.stream.parseOctetString(i, i + n)
+                        return this.reSeemsASCII.test(r) ? r.substring(0, 200) + (r.length > 200 ? "" : "") : this.stream.parseOctetString(i, i + n)
                     }
                     switch (e) {
                     case 1:
@@ -2317,8 +2298,7 @@ class Login(object):
                     this.length >= 0 ? i += this.length : i += -this.length + " (undefined)",
                     32 & this.tag ? i += "<br/>(constructed)" : 3 != this.tag && 4 != this.tag || null === this.sub || (i += "<br/>(encapsulates)"),
                     null !== r && (i += "<br/>Value:<br/><b>" + r + "</b>",
-                    "object" === ("undefined" == typeof oids ? "undefined" : (0,
-                    h.default)(oids)) && 6 == this.tag)) {
+                    "object" === "undefined" == typeof oids  && 6 == this.tag)) {
                         var a = oids[r];
                         a && (a.d && (i += "<br/>" + a.d),
                         a.c && (i += "<br/>" + a.c),
@@ -2709,33 +2689,15 @@ class Login(object):
             }
             ,
             $.version = "2.3.1",
-            t.JSEncrypt = $
-        }
+            JSEncrypt = $
+        })(JSEncrypt);
 
-        
-        
-        function getpwd(pwd){
-            var n = new s;
+
+
+        function getpwd(pwd, uuid){
+            var str = '["' + pwd + '","' + uuid +'"';
+            var n = new JSEncrypt;
             n.setPublicKey("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCPwBMT8+6nlRZ2msEL7Nr/SX5ZGxr9TB9SGbUnxcpqZIts99kmx3Bg+9vtuaoXISpKkeiMDj3BCsHSsPmnsli6pJoDobRM3CoLA6rR9jYK0XkmqtflRo+JiImhbJTHvbrv4zSt4Njn+BSNRA5VE0vtnSMbSeWhhHGDBIQf7Qf/pwIDAQAB")
-            return n.encrypt(["1111", "b1f7c1b2-23ca-424b-a6ae-777d23190c04"])
-        
-      }  
-        
-        """
-        pwd = execjs.compile(js_pwd).call("getpwd", self.pwd)
-        return pwd
+            return n.encrypt(str)
 
-    def login_(self):
-        pwd = self.get_pwd()
-        print(pwd)
-
-
-if __name__ == '__main__':
-    user = "1111"
-    pwd = "2222"
-
-    login = Login(user, pwd)  # TODO: 输入 账号 密码
-
-    login.login_()
-
-
+      }

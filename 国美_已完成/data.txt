@@ -1,0 +1,10 @@
+loginName:
+password:
+publicKey:
+passwordNum: 2
+captcha:
+autoLoginMode:
+chkRememberUsername: 1
+loginType: 0
+captchaType: login
+login: 登录

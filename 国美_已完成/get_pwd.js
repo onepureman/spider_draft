@@ -1,41 +1,5 @@
-"""
-Base_Url: https://www.gome.com.cn/
-Author: jing
-Modify: 2020/10/22
-"""
-
-
-import requests
-import execjs
-from pprint import pprint
-import time
-
-
-class Login():
-    def __init__(self, user, pwd):
-        self.user = user
-        self.pwd = pwd
-        self.login_url = "https://login.gome.com.cn/gmsst5Login.no"
-        self.sess = requests.session()
-        self.sess.headers = {
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
-        }
-
-
-    def load_data(self, path):
-        data = {}
-        with open(path, "rt", encoding="utf-8") as f:
-            read = f.readlines()
-            for line in read:
-                split_ = line.split(":")
-                data[split_[0]] = ":".join(split_[1:]).replace("\n", "").replace(" ", "")
-        return data
-
-    def get_pwd(self):
-
-        js_pwd = """
-        navigator = {};window=this;
-        var JSEncryptExports = {};
+navigator = {};window=this;
+var JSEncryptExports = {};
 (function(t) {
     var e;
     var i = 0xdeadbeefcafe;
@@ -1482,7 +1446,7 @@ class Login():
         var i = "";
         var r = 0;
         while (r + e < t.length) {
-            i += t.substring(r, r + e) + "\\n";
+            i += t.substring(r, r + e) + "\n";
             r += e
         }
         return i + t.substring(r, t.length)
@@ -2080,9 +2044,9 @@ class Login():
         this.getPEMStringFromHex = function(t, e) {
             var i = CryptoJS.enc.Hex.parse(t);
             var r = CryptoJS.enc.Base64.stringify(i);
-            var s = r.replace(/(.{64})/g, "$1\\r\\n");
-            s = s.replace(/\\r\\n$/, "");
-            return "-----BEGIN " + e + "-----\\r\\n" + s + "\\r\\n-----END " + e + "-----\\r\\n"
+            var s = r.replace(/(.{64})/g, "$1\r\n");
+            s = s.replace(/\r\n$/, "");
+            return "-----BEGIN " + e + "-----\r\n" + s + "\r\n-----END " + e + "-----\r\n"
         }
     }
     ;
@@ -2611,7 +2575,7 @@ class Login():
             var r;
             if (i === t) {
                 var s = "0123456789ABCDEF"
-                  , n = " \f\\n\\r	 \u2028\u2029";
+                  , n = " \f\n\r	 \u2028\u2029";
                 i = [];
                 for (r = 0; r < 16; ++r)
                     i[s.charAt(r)] = r;
@@ -2657,7 +2621,7 @@ class Login():
             var r;
             if (i === t) {
                 var s = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-                  , n = "= \f\\n\\r	 \u2028\u2029";
+                  , n = "= \f\n\r	 \u2028\u2029";
                 i = [];
                 for (r = 0; r < 64; ++r)
                     i[s.charAt(r)] = r;
@@ -2701,7 +2665,7 @@ class Login():
             return o
         }
         ;
-        e.re = /-----BEGIN [^-]+-----([A-Za-z0-9+\/=\s]+)-----END [^-]+-----|begin-base64[^\\n]+\\n([A-Za-z0-9+\/=\s]+)====/;
+        e.re = /-----BEGIN [^-]+-----([A-Za-z0-9+\/=\s]+)-----END [^-]+-----|begin-base64[^\n]+\n([A-Za-z0-9+\/=\s]+)====/;
         e.unarmor = function(t) {
             var i = e.re.exec(t);
             if (i) {
@@ -2764,7 +2728,7 @@ class Login():
                         r += "  ";
                         break;
                     case 15:
-                        r += "\\n";
+                        r += "\n";
                         break;
                     default:
                         r += " "
@@ -3056,7 +3020,7 @@ class Login():
                 i += " (constructed)";
             else if ((this.tag == 3 || this.tag == 4) && this.sub !== null)
                 i += " (encapsulates)";
-            i += "\\n";
+            i += "\n";
             if (this.sub !== null) {
                 e += "  ";
                 for (var r = 0, s = this.sub.length; r < s; ++r)
@@ -3292,7 +3256,7 @@ class Login():
                   , o = new s(t[e].value,0)
                   , h = n.decodeLength(o);
                 if (h != t[e].expected)
-                    document.write("In test[" + e + "] expected " + t[e].expected + " got " + h + "\\n")
+                    document.write("In test[" + e + "] expected " + t[e].expected + " got " + h + "\n")
             }
         }
         ;
@@ -3414,20 +3378,20 @@ class Login():
         if (!t) {
             return t
         }
-        var i = "(.{1," + e + "})( +|$\\n?)|(.{1," + e + "})";
-        return t.match(RegExp(i, "g")).join("\\n")
+        var i = "(.{1," + e + "})( +|$\n?)|(.{1," + e + "})";
+        return t.match(RegExp(i, "g")).join("\n")
     }
     ;
     Ki.prototype.getPrivateKey = function() {
-        var t = "-----BEGIN RSA PRIVATE KEY-----\\n";
-        t += this.wordwrap(this.getPrivateBaseKeyB64()) + "\\n";
+        var t = "-----BEGIN RSA PRIVATE KEY-----\n";
+        t += this.wordwrap(this.getPrivateBaseKeyB64()) + "\n";
         t += "-----END RSA PRIVATE KEY-----";
         return t
     }
     ;
     Ki.prototype.getPublicKey = function() {
-        var t = "-----BEGIN PUBLIC KEY-----\\n";
-        t += this.wordwrap(this.getPublicBaseKeyB64()) + "\\n";
+        var t = "-----BEGIN PUBLIC KEY-----\n";
+        t += this.wordwrap(this.getPublicBaseKeyB64()) + "\n";
         t += "-----END PUBLIC KEY-----";
         return t
     }
@@ -3547,43 +3511,9 @@ class Login():
     }
 }
 )(this, JSEncryptExports.JSEncrypt);
-        
-        function getpwd(pwd){
-        var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDcQaCtHVStcFp1bvx6FY/9B8ezfY//K6hczGBCi4qjLV0xs30dJ22a63PRXBf/jMdnC4x5/+UU6/l8WkZW4t0EIPcInQHsJ1ExLxMqynutzVFjztU3sUE+ZG12/QfkiBRNoFNhxD2hMyZfaexxnUUrGsXJo29jUp+f6Pfwi2kRjwIDAQAB"
-            var c = new JSEncrypt;
-            c.setPublicKey(publicKey);
-            return c.encrypt(pwd);
-        }
-        
-        """
 
-        pwd = execjs.compile(js_pwd).call("getpwd", "222")
-        return pwd
-
-    def login_(self):
-        self.sess.get("https://login.gome.com.cn/login?intcmp=sy-public01012")
-        rews = self.sess.post("https://login.gome.com.cn/isShowAuthenticCode.no?sendtimestamp=" + str(int(time.time() * 1000)), data={"loginName": self.user})
-
-        print(rews.content.decode())
-        # data = self.load_data("data.txt")
-        # data["loginName"] = self.user
-        # data["password"] = self.get_pwd()
-        # pprint(data)
-        # self.sess.headers = {
-        #     "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
-        #     "origin": "https://login.gome.com.cn",
-        #     "referer": "https://login.gome.com.cn/login?intcmp=sy-public01012",
-        #     "sec-fetch-mode": "cors",
-        #     "sec-fetch-site": "same-origin",
-        #
-        # }
-        #
-        # response = self.sess.post(self.login_url)
-        # print(response.content.decode())
-
-
-if __name__ == '__main__':
-    user = "11122222"
-    pwd = "22211111"
-    login = Login(user, pwd)  # TODO: 输入 账号 密码
-    login.login_()
+function getpwd(pwd){
+    var c = new JSEncryptExports.JSEncrypt;
+    c.setPublicKey("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDcQaCtHVStcFp1bvx6FY/9B8ezfY//K6hczGBCi4qjLV0xs30dJ22a63PRXBf/jMdnC4x5/+UU6/l8WkZW4t0EIPcInQHsJ1ExLxMqynutzVFjztU3sUE+ZG12/QfkiBRNoFNhxD2hMyZfaexxnUUrGsXJo29jUp+f6Pfwi2kRjwIDAQAB")
+    return c.encrypt(pwd)
+}
