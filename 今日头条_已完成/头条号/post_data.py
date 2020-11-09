@@ -755,7 +755,7 @@ header = {
 }
 
 cookies = {
-    "Cookie": "SLARDAR_WEB_ID=d1f3b16c-eddd-4819-a930-dc253887a9c1; ttcid=21d78bb8e55244939bfe45bd3e527d6613; tt_webid=6872548552942618126; ccid=25866261f3595501c0188640200a13cf; _ba=BA0.2-20201029-5110e-As9wgo5UzSzqzOx1qXsI; ttwid=1%7CCetPmAPxWF1KB9J79MMQ6m8UnyDImPQnSTkM2IBD2uc%7C1603951839%7C2bf2744a4c3140a537900770ff20f03a87a1819c81cbcc92ded89c5dc08f17cf; s_v_web_id=verify_kgufij3q_HjubwgRz_5UG7_43Lx_8IV6_DKDYfTXEoPNI; passport_csrf_token=ca64ff47e2e6f27760e1af4af0fa85ff; d_ticket=08b2003a1863a09cf521d221a8aafd0bfbde9; odin_tt=de47fda43c0043bd13d15e0e3755b7bd94dab4ee57b169492d1301af7f8c3504fc8dbb7b01062b03952d79ceff4e9ada07119e4c6be9e2adc36fd88b3f2077e9; sso_auth_status=05647f85779f44ed4fcec1f4902b23f3; sso_uid_tt=5f93863abc5c49a6268ec8f59ab96ec7; sso_uid_tt_ss=5f93863abc5c49a6268ec8f59ab96ec7; toutiao_sso_user=db9f9aa2fd62388d4b827ae6d228f346; toutiao_sso_user_ss=db9f9aa2fd62388d4b827ae6d228f346; passport_auth_status=6ba2bc1228801d9683aaf8edd0c2950a%2C9e0915362c08bd243c2cf4946e6b4806; sid_guard=488a7158b4e30711aaa8ec085672702a%7C1603951993%7C5184000%7CMon%2C+28-Dec-2020+06%3A13%3A13+GMT; uid_tt_ss=3acc1e302157abd982d654eb535ae2f8; sid_tt=488a7158b4e30711aaa8ec085672702a; sessionid=488a7158b4e30711aaa8ec085672702a; sessionid_ss=488a7158b4e30711aaa8ec085672702a; uid_tt=3acc1e302157abd982d654eb535ae2f80ca426e829188b9b3250ca6ab0ec32a2; MONITOR_WEB_ID=0d1bfec6-fccc-4058-b90c-2a33f1f93dbc; gftoken=NDg4YTcxNThiNHwxNjAzOTUyODA4MTd8fDAGBgYGBgY; tt_scid=S9XtueCghuTuzq0aWHVaR4i0xHp1F.26QCoPuj56fR9i2GGZStcojKKkMFU9BcM7a83e"
+    "Cookie": ""
 }
 
 res = sess.post(post_url, data=data, cookies=cookies, headers=header).json()
