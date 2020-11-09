@@ -1,13 +1,3 @@
-"""
-Base_Url: https://www.bilibili.com/
-Author: jing
-Modify: 2020/10/22
-"""
-
-import execjs
-
-
-js_ = """
 window=this; navigator= {};
 /*! JSEncrypt v2.3.1 | https://npmcdn.com/jsencrypt@2.3.1/LICENSE.txt */
 !function(t, e) {
@@ -1517,7 +1507,7 @@ window=this; navigator= {};
  * This software is licensed under the terms of the MIT License.
  * http://kjur.github.com/jsrsasign/license
  *
- * The above copyright and license notice shall be 
+ * The above copyright and license notice shall be
  * included in all copies or substantial portions of the Software.
  */
     /**
@@ -1557,9 +1547,9 @@ window=this; navigator= {};
         this.getPEMStringFromHex = function(t, e) {
             var i = CryptoJS.enc.Hex.parse(t)
               , r = CryptoJS.enc.Base64.stringify(i)
-              , s = r.replace(/(.{64})/g, "$1\\r\\n");
-            return s = s.replace(/\\r\\n$/, ""),
-            "-----BEGIN " + e + "-----\\r\\n" + s + "\\r\\n-----END " + e + "-----\\r\\n"
+              , s = r.replace(/(.{64})/g, "$1\r\n");
+            return s = s.replace(/\r\n$/, ""),
+            "-----BEGIN " + e + "-----\r\n" + s + "\r\n-----END " + e + "-----\r\n"
         }
     }
     ,
@@ -1977,7 +1967,7 @@ window=this; navigator= {};
     Ce.extend(KJUR.asn1.DERTaggedObject, KJUR.asn1.ASN1Object),
     // Copyright (c) 2008-2013 Lapo Luchini <lapo@lapo.it>
     // copyright notice and this permission notice appear in all copies.
-    // 
+    //
     // THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
     // WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
     // MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -1992,7 +1982,7 @@ window=this; navigator= {};
             var r;
             if (e === t) {
                 var s = "0123456789ABCDEF"
-                  , n = " \f\\n\\r	 \u2028\u2029";
+                  , n = " \f\n\r	 \u2028\u2029";
                 for (e = [],
                 r = 0; 16 > r; ++r)
                     e[s.charAt(r)] = r;
@@ -2028,7 +2018,7 @@ window=this; navigator= {};
     }(),
     // Copyright (c) 2008-2013 Lapo Luchini <lapo@lapo.it>
     // copyright notice and this permission notice appear in all copies.
-    // 
+    //
     // THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
     // WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
     // MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -2043,7 +2033,7 @@ window=this; navigator= {};
             var r;
             if (e === t) {
                 var s = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-                  , n = "= \f\\n\\r	 \u2028\u2029";
+                  , n = "= \f\n\r	 \u2028\u2029";
                 for (e = [],
                 r = 0; 64 > r; ++r)
                     e[s.charAt(r)] = r;
@@ -2082,7 +2072,7 @@ window=this; navigator= {};
             return o
         }
         ,
-        i.re = /-----BEGIN [^-]+-----([A-Za-z0-9+\/=\s]+)-----END [^-]+-----|begin-base64[^\\n]+\\n([A-Za-z0-9+\/=\s]+)====/,
+        i.re = /-----BEGIN [^-]+-----([A-Za-z0-9+\/=\s]+)-----END [^-]+-----|begin-base64[^\n]+\n([A-Za-z0-9+\/=\s]+)====/,
         i.unarmor = function(t) {
             var e = i.re.exec(t);
             if (e)
@@ -2100,7 +2090,7 @@ window=this; navigator= {};
     }(),
     // Copyright (c) 2008-2013 Lapo Luchini <lapo@lapo.it>
     // copyright notice and this permission notice appear in all copies.
-    // 
+    //
     // THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
     // WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
     // MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -2155,7 +2145,7 @@ window=this; navigator= {};
                         r += "  ";
                         break;
                     case 15:
-                        r += "\\n";
+                        r += "\n";
                         break;
                     default:
                         r += " "
@@ -2402,7 +2392,7 @@ window=this; navigator= {};
             if (this.length >= 0 && (i += "+"),
             i += this.length,
             32 & this.tag ? i += " (constructed)" : 3 != this.tag && 4 != this.tag || null === this.sub || (i += " (encapsulates)"),
-            i += "\\n",
+            i += "\n",
             null !== this.sub) {
                 e += "  ";
                 for (var r = 0, s = this.sub.length; s > r; ++r)
@@ -2609,7 +2599,7 @@ window=this; navigator= {};
             }], r = 0, s = t.length; s > r; ++r) {
                 var n = new e(t[r].value,0)
                   , o = i.decodeLength(n);
-                o != t[r].expected && document.write("In test[" + r + "] expected " + t[r].expected + " got " + o + "\\n")
+                o != t[r].expected && document.write("In test[" + r + "] expected " + t[r].expected + " got " + o + "\n")
             }
         }
         ,
@@ -2727,19 +2717,19 @@ window=this; navigator= {};
         if (e = e || 64,
         !t)
             return t;
-        var i = "(.{1," + e + "})( +|$\\n?)|(.{1," + e + "})";
-        return t.match(RegExp(i, "g")).join("\\n")
+        var i = "(.{1," + e + "})( +|$\n?)|(.{1," + e + "})";
+        return t.match(RegExp(i, "g")).join("\n")
     }
     ,
     ue.prototype.getPrivateKey = function() {
-        var t = "-----BEGIN RSA PRIVATE KEY-----\\n";
-        return t += this.wordwrap(this.getPrivateBaseKeyB64()) + "\\n",
+        var t = "-----BEGIN RSA PRIVATE KEY-----\n";
+        return t += this.wordwrap(this.getPrivateBaseKeyB64()) + "\n",
         t += "-----END RSA PRIVATE KEY-----"
     }
     ,
     ue.prototype.getPublicKey = function() {
-        var t = "-----BEGIN PUBLIC KEY-----\\n";
-        return t += this.wordwrap(this.getPublicBaseKeyB64()) + "\\n",
+        var t = "-----BEGIN PUBLIC KEY-----\n";
+        return t += this.wordwrap(this.getPublicBaseKeyB64()) + "\n",
         t += "-----END PUBLIC KEY-----"
     }
     ,
@@ -2833,17 +2823,13 @@ window=this; navigator= {};
     }
     ,
     ze.version = "2.3.1",
-    t.JSEncrypt = ze
+    JSEncrypt = ze
 });
 
-encryptPassword=function getpwd(e){
-            t = {"hash":"065a5a3fc385aef4","key":"-----BEGIN PUBLIC KEY-----\\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDjb4V7EidX/ym28t2ybo0U6t0n\\n6p4ej8VjqKHg100va6jkNbNTrLQqMCQCAYtXMXXp2Fwkk6WR+12N9zknLjf+C9sx\\n/+l48mjUU8RqahiFD1XT/u2e0m2EN029OhCgkHx3Fc/KlFSIbak93EH/XlYis0w+\\nXl69GV6klzgxW6d2xQIDAQAB\\n-----END PUBLIC KEY-----\\n"}
+function getpwd(e){
+            t = {"hash":"065a5a3fc385aef4","key":"-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDjb4V7EidX/ym28t2ybo0U6t0n\n6p4ej8VjqKHg100va6jkNbNTrLQqMCQCAYtXMXXp2Fwkk6WR+12N9zknLjf+C9sx\n/+l48mjUU8RqahiFD1XT/u2e0m2EN029OhCgkHx3Fc/KlFSIbak93EH/XlYis0w+\nXl69GV6klzgxW6d2xQIDAQAB\n-----END PUBLIC KEY-----\n"}
             var n = new JSEncrypt;
             n.setPublicKey(t.key);
             var a = n.encrypt(t.hash + e);
             return a
             }
-"""
-
-pwd = execjs.compile(js_).call("encryptPassword", "")   # TODO: 输入密码
-print(pwd)

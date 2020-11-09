@@ -1,3 +1,10 @@
+window=this;
+function getpwd(pwd){
+    return UDB.SDK.rsa.RSAUtils.encryptedString(pwd)
+
+}
+
+
 (function() {
 var that = {};
 var RSAUtils = {};
@@ -741,3 +748,4 @@ that.registerNS = NS;
 that.RSAUtils = RSAUtils;
 that.registerNS("UDB.SDK.rsa", that);
 })();
+

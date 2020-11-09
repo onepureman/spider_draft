@@ -57,17 +57,17 @@ class Login(object):
 
         r = self.sess.post(self.login_url, data=data)
 
-        # 验证是否登陆成功
-        yanzheng_url = "https://login.360.cn/?o=sso&m=info&requestScema=https&callback=jQuery110207241101365568958_1602486378473&_=" + str(
-            round(time.time() * 1000))
-        response = self.sess.get(yanzheng_url)
-        print(response.content.decode())
-        # TODO: 未能成功验证， ，没有获取到 用户名称
+        # # 验证是否登陆成功
+        # yanzheng_url = "https://login.360.cn/?o=sso&m=info&requestScema=https&callback=jQuery110207241101365568958_1602486378473&_=" + str(
+        #     round(time.time() * 1000))
+        # response = self.sess.get(yanzheng_url)
+        # print(response.content.decode())
+        # # TODO: 未能成功验证， ，没有获取到 用户名称
 
 
 if __name__ == '__main__':
     user = ""
-    pwd = "222222"
+    pwd = ""
 
     login = Login(user, pwd)  # TODO: 输入账号&密码
     login.login_()

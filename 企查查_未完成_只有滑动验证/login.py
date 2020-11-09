@@ -77,7 +77,7 @@ class Login(object):
         
         window.document = document;
         
-         const {e} = require("E:/pycharmproject/study_own/js_study/企查查_未完成/um.js")
+         const {e} = require("E:/pycharmproject/study_own/js_study/企查查_未完成_只有滑动验证/um.js")
          
          
          function midtoken(){

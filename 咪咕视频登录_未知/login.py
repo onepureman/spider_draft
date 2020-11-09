@@ -643,29 +643,30 @@ function getpwd(pwd) {
 
 """
 
-en_password = execjs.compile(js_rsa).call("getpwd", "")  # TODO: 输入密码
-
-finger = execjs.compile(js_rsa).call("rsaFingerprint")
-fingerPrintDetail = finger["details"]
-fingerPrint = finger["result"]
-
-data = {
-"sourceID": "203021",
-"appType": "2",
-"relayState": "login",
-"loginID": "27c866d6a73d32b32429ecb47236136351e19c5068cc6efc26b6b2888a37e6279ee41b9a508187f5b8f8d3a0e456c72f2fc47df60a10ed7be4aa6e229fc29d6fc07ddebb610eb620238ebfb2d39588a6ba95a7135acd2f1f921b7a70dc2e8c7e42e65e69b1bd0069499b59f76145c18b0ca806de4c04e65f1b88ff6f7577687c",
-"enpassword": en_password,
-"captcha": "",
-"imgcodeType": "1",
-"fingerPrint": fingerPrint,
-"fingerPrintDetail": fingerPrintDetail,
-"isAsync": "true"
-
-}
-url ="https://passport.migu.cn/authn"
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
-}
+en_password = execjs.compile(js_rsa).call("getpwd", "11111")  # TODO: 输入密码
+print(en_password)
 #
-r = requests.post(url, data=data)
-print(r.content.decode())
+# finger = execjs.compile(js_rsa).call("rsaFingerprint")
+# fingerPrintDetail = finger["details"]
+# fingerPrint = finger["result"]
+#
+# data = {
+# "sourceID": "203021",
+# "appType": "2",
+# "relayState": "login",
+# "loginID": "27c866d6a73d32b32429ecb47236136351e19c5068cc6efc26b6b2888a37e6279ee41b9a508187f5b8f8d3a0e456c72f2fc47df60a10ed7be4aa6e229fc29d6fc07ddebb610eb620238ebfb2d39588a6ba95a7135acd2f1f921b7a70dc2e8c7e42e65e69b1bd0069499b59f76145c18b0ca806de4c04e65f1b88ff6f7577687c",
+# "enpassword": en_password,
+# "captcha": "",
+# "imgcodeType": "1",
+# "fingerPrint": fingerPrint,
+# "fingerPrintDetail": fingerPrintDetail,
+# "isAsync": "true"
+#
+# }
+# url ="https://passport.migu.cn/authn"
+# headers = {
+#     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+# }
+# #
+# r = requests.post(url, data=data)
+# print(r.content.decode())
