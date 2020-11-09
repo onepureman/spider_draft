@@ -77,7 +77,7 @@ class Login(object):
         
         window.document = document;
         
-         const {e} = require("E:/pycharmproject/study_own/js_study/企查查_未完成_只有滑动验证/um.js")
+         const {e} = require("E:/pycharmproject/study_own/js_study/企查查_未完成_只有滑动验证需要破解/um.js")
          
          
          function midtoken(){
@@ -124,8 +124,8 @@ class Login(object):
 
 
 if __name__ == '__main__':
-    user = "18513606785"
-    pwd = "222222"
+    user = ""
+    pwd = "2222"
 
     login = Login(user, pwd)  # TODO: 输入账号&密码
     login.login_()

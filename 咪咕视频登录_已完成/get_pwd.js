@@ -1,20 +1,27 @@
-"""
-Base_Url: https://www.migu.cn/
-Author: jing
-Modify: 2020/10/22
-"""
+navigator={};window=this;
+function getpwd(pwd) {
+    var c = new RSAKey;
+    c.setPublic("00833c4af965ff7a8409f8b5d5a83d87f2f19d7c1eb40dc59a98d2346cbb145046b2c6facc25b5cc363443f0f7ebd9524b7c1e1917bf7d849212339f6c1d3711b115ecb20f0c89fc2182a985ea28cbb4adf6a321ff7e715ba9b8d7261d1c140485df3b705247a70c28c9068caabbedbf9510dada6d13d99e57642b853a73406817", "010001");
+    return c.encrypt(pwd)
+}
+ rsaFingerprint = function() {
+    var c = '"{"user_agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Saf","language":"zh-CN","color_depth":"24","pixel_ratio":"1.5","hardware_concurrency":"12","resolution":"2560,1440","available_resolution":"2560,1400","timezone_offset":"-480","session_storage":"1","local_storage":"1","indexed_db":"1","open_database":"1","cpu_class":"unknown","navigator_platform":"Win32","do_not_track":"unknown","regular_plugins":"APlayer ActiveX hosting plugin::APlayer III ActiveX hosting plugin for Firefox::application/x-thunde","webgl_vendor":"Google Inc.~Google SwiftShader","adblock":"false","has_lied_languages":"false","has_lied_resolution":"false","has_lied_os":"false","has_lied_browser":"false","touch_support":"0,false,false","js_fonts":"Arial,Arial Black,Arial Narrow,Arial Rounded MT Bold,Book Antiqua,Bookman Old Style,Calibri,Cambria,"}"'
+      , d = "ebd4db1d3b9671e07f891a4290100722"
+      , e = c.length
+      , f = ""
+      , g = new RSAKey;
+    g.setPublic("00833c4af965ff7a8409f8b5d5a83d87f2f19d7c1eb40dc59a98d2346cbb145046b2c6facc25b5cc363443f0f7ebd9524b7c1e1917bf7d849212339f6c1d3711b115ecb20f0c89fc2182a985ea28cbb4adf6a321ff7e715ba9b8d7261d1c140485df3b705247a70c28c9068caabbedbf9510dada6d13d99e57642b853a73406817", "010001");
+    for (var h = g.encrypt(d), i = 0; e > i; i += 117)
+        f += g.encrypt(c.substr(i, 117));
+    return {
+        details: f,
+        result: h
+    }
+    }
 
-import requests
-import js2py
-import execjs
 
 
-public_key_url = "https://passport.migu.cn/password/publickey"
-public_key = requests.post(public_key_url).json()
-publicExponent, modulus = public_key["result"]["publicExponent"], public_key["result"]["modulus"]
-js_rsa = """
-navigator = {}; window=this;
-function d(a, b, c) {
+    function d(a, b, c) {
         null != a && ("number" == typeof a ? this.fromNumber(a, b, c) : null == b && "string" != typeof a ? this.fromString(a, 256) : this.fromString(a, b))
     }
     function e() {
@@ -615,58 +622,5 @@ function d(a, b, c) {
     db.prototype.doPublic = fb,
     db.prototype.setPublic = eb,
     db.prototype.encrypt = gb,
-
     RSAKey= db
-    
-function getpwd(pwd) {
-	a = {"status":2000,"message":"","header":{},"result":{"publicExponent":"010001","modulus":"00833c4af965ff7a8409f8b5d5a83d87f2f19d7c1eb40dc59a98d2346cbb145046b2c6facc25b5cc363443f0f7ebd9524b7c1e1917bf7d849212339f6c1d3711b115ecb20f0c89fc2182a985ea28cbb4adf6a321ff7e715ba9b8d7261d1c140485df3b705247a70c28c9068caabbedbf9510dada6d13d99e57642b853a73406817"}}
-	c = new RSAKey;
-    c.setPublic(a.result.modulus, a.result.publicExponent);
-    var d = c.encrypt(pwd);
-	return d
-}
 
-    rsaFingerprint = function() {
-    var c = '"{"user_agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Saf","language":"zh-CN","color_depth":"24","pixel_ratio":"1.5","hardware_concurrency":"12","resolution":"2560,1440","available_resolution":"2560,1400","timezone_offset":"-480","session_storage":"1","local_storage":"1","indexed_db":"1","open_database":"1","cpu_class":"unknown","navigator_platform":"Win32","do_not_track":"unknown","regular_plugins":"APlayer ActiveX hosting plugin::APlayer III ActiveX hosting plugin for Firefox::application/x-thunde","webgl_vendor":"Google Inc.~Google SwiftShader","adblock":"false","has_lied_languages":"false","has_lied_resolution":"false","has_lied_os":"false","has_lied_browser":"false","touch_support":"0,false,false","js_fonts":"Arial,Arial Black,Arial Narrow,Arial Rounded MT Bold,Book Antiqua,Bookman Old Style,Calibri,Cambria,"}"'
-      , d = "ebd4db1d3b9671e07f891a4290100722"
-      , e = c.length
-      , f = ""
-      , g = new RSAKey;
-    g.setPublic("00833c4af965ff7a8409f8b5d5a83d87f2f19d7c1eb40dc59a98d2346cbb145046b2c6facc25b5cc363443f0f7ebd9524b7c1e1917bf7d849212339f6c1d3711b115ecb20f0c89fc2182a985ea28cbb4adf6a321ff7e715ba9b8d7261d1c140485df3b705247a70c28c9068caabbedbf9510dada6d13d99e57642b853a73406817", "010001");
-    for (var h = g.encrypt(d), i = 0; e > i; i += 117)
-        f += g.encrypt(c.substr(i, 117));
-    return {
-        details: f,
-        result: h
-    }
-    }
-
-"""
-
-en_password = execjs.compile(js_rsa).call("getpwd", "11111")  # TODO: 输入密码
-print(en_password)
-#
-# finger = execjs.compile(js_rsa).call("rsaFingerprint")
-# fingerPrintDetail = finger["details"]
-# fingerPrint = finger["result"]
-#
-# data = {
-# "sourceID": "203021",
-# "appType": "2",
-# "relayState": "login",
-# "loginID": "27c866d6a73d32b32429ecb47236136351e19c5068cc6efc26b6b2888a37e6279ee41b9a508187f5b8f8d3a0e456c72f2fc47df60a10ed7be4aa6e229fc29d6fc07ddebb610eb620238ebfb2d39588a6ba95a7135acd2f1f921b7a70dc2e8c7e42e65e69b1bd0069499b59f76145c18b0ca806de4c04e65f1b88ff6f7577687c",
-# "enpassword": en_password,
-# "captcha": "",
-# "imgcodeType": "1",
-# "fingerPrint": fingerPrint,
-# "fingerPrintDetail": fingerPrintDetail,
-# "isAsync": "true"
-#
-# }
-# url ="https://passport.migu.cn/authn"
-# headers = {
-#     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
-# }
-# #
-# r = requests.post(url, data=data)
-# print(r.content.decode())
