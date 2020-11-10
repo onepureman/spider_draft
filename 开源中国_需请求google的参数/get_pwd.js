@@ -1,15 +1,4 @@
-"""
-Base_Url: https://www.oschina.net/
-Author: jing
-Modify: 2020/10/22
-"""
 
-
-import execjs
-from pprint import pprint
-import requests
-
-js_ = """
 function getpwd (pd){
 var CryptoJS = CryptoJS || function(e, t) {
     var n, r = {}, i = r.lib = {}, o = i.Base = function() {
@@ -235,16 +224,3 @@ var CryptoJS = CryptoJS || function(e, t) {
 return CryptoJS.SHA1(pd).toString()
 }
 
-"""
-
-# pwd = execjs.compile(js_).call("getpwd", "jjj")  # TODO: 输入 账号 密码
-# print(pwd)
-
-
-def get_google_code():
-    url = "https://recaptcha.net/recaptcha/api2/reload?k=6LfiMsEZAAAAADTM7mh5JeS3_L69QZr6iOAsJU9t"
-
-    r = requests.post(url)
-    print(r.content.decode())
-
-get_google_code()

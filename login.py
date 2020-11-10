@@ -18,6 +18,15 @@ class Login(object):
         self.sess = requests.session()
         self.login_url = ""
 
+    def load_data(self, path):
+        data = {}
+        with open(path, "rt", encoding="utf-8") as f:
+            read = f.readlines()
+            for line in read:
+                split_ = line.split(":")
+                data[split_[0]] = ":".join(split_[1:]).replace("\n", "").replace(" ", "")
+        return data
+
     def get_pwd(self):
         with open('./get_pwd.js', encoding='utf-8') as f:
             js_pwd = f.read()

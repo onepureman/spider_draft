@@ -1,0 +1,13 @@
+identity: 18513606487
+password: 53e73c49f0382e6e35d316e794fc7e59
+hkCode: 871773e0184047f88820455c14c71870
+_HOP_: {"version":"1.0.0","action":"api.www.login.login_by_password","secret_id":"5722f877e4b0d4512e3fd872","current_time":1604974585,"sign":"ca94679f9d6830e5132f8e226d4ccbb3"}
+from: mvue
+adcode: 100000
+appid: 100
+Siger: a8884a13418eb87dad86c8fd5196a8b9
+uuid: 0
+uid: 0
+hduid: 0
+vc: 177
+vn: 1.0.0

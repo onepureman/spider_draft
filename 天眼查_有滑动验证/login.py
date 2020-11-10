@@ -8,6 +8,7 @@ import execjs
 import requests
 from pprint import pprint
 import re
+import json
 
 
 class Login(object):
@@ -16,7 +17,7 @@ class Login(object):
         self.user = user
         self.pwd = pwd
         self.sess = requests.session()
-        self.login_url = ""
+        self.login_url = "https://www.tianyancha.com/cd/login.json"
 
     def get_pwd(self):
 
@@ -198,22 +199,28 @@ class Login(object):
         return data
 
     def login_(self):
+        data = self.load_data("data.txt")
         self.sess.get("https://www.tianyancha.com/vipintro/?jsid=SEM-SOUGOU-PP-VIS-212505")
 
         res = self.sess.post("https://www.tianyancha.com/verify/geetest.xhtml", json={"uuid": "1603695931416"}).json()
-
         url = "https://api.geetest.com/get.php?gt=" + res["data"]["gt"] + "&challenge=" + res["data"]["challenge"] + "&product=popup&offline=false&protocol=https://&beeline=/static/js/beeline.1.0.1.js&type=slide&maze=/static/js/maze.1.0.1.js&pencil=/static/js/pencil.1.0.3.js&voice=/static/js/voice.1.2.0.js&path=/static/js/geetest.6.0.9.js&callback=geetest_1603695937791"
-
         res = self.sess.get(url)
-        print(res.content.decode())
-        data = self.load_data("data.txt")
-        pwd = self.get_pwd()
-        data["cdpassword"] = pwd
         data["challenge"] = re.findall("\"challenge\": \"(.*?)\",", res.content.decode())
-        data["seccode"] = ""
+
+        data["mobile"] = self.user
+        data["cdpassword"] = self.get_pwd()
+
+        # TODO:获取滑动验证之后返回的参数
+        validate = ""
+        data["seccode"] = validate + "|jordan"
+        data["validate"] = validate
+
+        res = self.sess.post(self.login_url, data=json.dumps(data))
+        print(res.content.decode())
+
 
 if __name__ == '__main__':
-    user = ""
+    user = "18513624157"
     pwd = "1111111111"
 
     login = Login(user, pwd)  # TODO: 输入账号&密码

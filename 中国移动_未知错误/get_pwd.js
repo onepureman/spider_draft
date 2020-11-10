@@ -1,14 +1,12 @@
-"""
-Base_Url: http://wap.10086.cn/gd/index_200_200.html
-Author: jing
-Modify: 2020/10/22
-"""
-import execjs
-from pprint import pprint
-import requests
+navigator={};window=this;
+function getpwd(pwd) {
+    var key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsgDq4OqxuEisnk2F0EJFmw4xKa5IrcqEYHvqxPs2CHEg2kolhfWA2SjNuGAHxyDDE5MLtOvzuXjBx/5YJtc9zj2xR/0moesS+Vi/xtG1tkVaTCba+TV+Y5C61iyr3FGqr+KOD4/XECu0Xky1W9ZmmaFADmZi7+6gO9wjgVpU9aLcBcw/loHOeJrCqjp7pA98hRJRY+MML8MK15mnC4ebooOva+mJlstW6t/1lghR8WNV8cocxgcHHuXBxgns2MlACQbSdJ8c6Z3RQeRZBzyjfey6JCCfbEKouVrWIUuPphBL3OANfgp0B+QG31bapvePTfXU48TYK0M5kE+8LgbbWQIDAQAB";
+    var encrypt = new JSEncrypt();
+    encrypt.setPublicKey(key)
+    return encrypt.encrypt(pwd)
+}
 
-js_ = """
-navigator = {}; window=this;
+/*! JSEncrypt v2.3.1 | https://npmcdn.com/jsencrypt@2.3.1/LICENSE.txt */
 !function(t, e) {
     "function" == typeof define && define.amd ? define(["exports"], e) : e("object" == typeof exports && "string" != typeof exports.nodeName ? module.exports : t)
 }(this, function(t) {
@@ -1516,7 +1514,7 @@ navigator = {}; window=this;
  * This software is licensed under the terms of the MIT License.
  * http://kjur.github.com/jsrsasign/license
  *
- * The above copyright and license notice shall be 
+ * The above copyright and license notice shall be
  * included in all copies or substantial portions of the Software.
  */
     /**
@@ -1556,9 +1554,9 @@ navigator = {}; window=this;
         this.getPEMStringFromHex = function(t, e) {
             var i = CryptoJS.enc.Hex.parse(t)
               , r = CryptoJS.enc.Base64.stringify(i)
-              , s = r.replace(/(.{64})/g, "$1\\r\\n");
-            return s = s.replace(/\\r\\n$/, ""),
-            "-----BEGIN " + e + "-----\\r\\n" + s + "\\r\\n-----END " + e + "-----\\r\\n"
+              , s = r.replace(/(.{64})/g, "$1\r\n");
+            return s = s.replace(/\r\n$/, ""),
+            "-----BEGIN " + e + "-----\r\n" + s + "\r\n-----END " + e + "-----\r\n"
         }
     }
     ,
@@ -1976,7 +1974,7 @@ navigator = {}; window=this;
     Ce.extend(KJUR.asn1.DERTaggedObject, KJUR.asn1.ASN1Object),
     // Copyright (c) 2008-2013 Lapo Luchini <lapo@lapo.it>
     // copyright notice and this permission notice appear in all copies.
-    // 
+    //
     // THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
     // WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
     // MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -1991,7 +1989,7 @@ navigator = {}; window=this;
             var r;
             if (e === t) {
                 var s = "0123456789ABCDEF"
-                  , n = " \f\\n\\r	Â \u2028\u2029";
+                  , n = " \f\n\r	Â \u2028\u2029";
                 for (e = [],
                 r = 0; 16 > r; ++r)
                     e[s.charAt(r)] = r;
@@ -2027,7 +2025,7 @@ navigator = {}; window=this;
     }(),
     // Copyright (c) 2008-2013 Lapo Luchini <lapo@lapo.it>
     // copyright notice and this permission notice appear in all copies.
-    // 
+    //
     // THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
     // WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
     // MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -2042,7 +2040,7 @@ navigator = {}; window=this;
             var r;
             if (e === t) {
                 var s = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-                  , n = "= \f\\n\\r	Â \u2028\u2029";
+                  , n = "= \f\n\r	Â \u2028\u2029";
                 for (e = [],
                 r = 0; 64 > r; ++r)
                     e[s.charAt(r)] = r;
@@ -2081,7 +2079,7 @@ navigator = {}; window=this;
             return o
         }
         ,
-        i.re = /-----BEGIN [^-]+-----([A-Za-z0-9+\/=\s]+)-----END [^-]+-----|begin-base64[^\\n]+\\n([A-Za-z0-9+\/=\s]+)====/,
+        i.re = /-----BEGIN [^-]+-----([A-Za-z0-9+\/=\s]+)-----END [^-]+-----|begin-base64[^\n]+\n([A-Za-z0-9+\/=\s]+)====/,
         i.unarmor = function(t) {
             var e = i.re.exec(t);
             if (e)
@@ -2099,7 +2097,7 @@ navigator = {}; window=this;
     }(),
     // Copyright (c) 2008-2013 Lapo Luchini <lapo@lapo.it>
     // copyright notice and this permission notice appear in all copies.
-    // 
+    //
     // THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
     // WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
     // MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -2154,7 +2152,7 @@ navigator = {}; window=this;
                         r += "  ";
                         break;
                     case 15:
-                        r += "\\n";
+                        r += "\n";
                         break;
                     default:
                         r += " "
@@ -2401,7 +2399,7 @@ navigator = {}; window=this;
             if (this.length >= 0 && (i += "+"),
             i += this.length,
             32 & this.tag ? i += " (constructed)" : 3 != this.tag && 4 != this.tag || null === this.sub || (i += " (encapsulates)"),
-            i += "\\n",
+            i += "\n",
             null !== this.sub) {
                 e += "  ";
                 for (var r = 0, s = this.sub.length; s > r; ++r)
@@ -2608,7 +2606,7 @@ navigator = {}; window=this;
             }], r = 0, s = t.length; s > r; ++r) {
                 var n = new e(t[r].value,0)
                   , o = i.decodeLength(n);
-                o != t[r].expected && document.write("In test[" + r + "] expected " + t[r].expected + " got " + o + "\\n")
+                o != t[r].expected && document.write("In test[" + r + "] expected " + t[r].expected + " got " + o + "\n")
             }
         }
         ,
@@ -2726,19 +2724,19 @@ navigator = {}; window=this;
         if (e = e || 64,
         !t)
             return t;
-        var i = "(.{1," + e + "})( +|$\\n?)|(.{1," + e + "})";
-        return t.match(RegExp(i, "g")).join("\\n")
+        var i = "(.{1," + e + "})( +|$\n?)|(.{1," + e + "})";
+        return t.match(RegExp(i, "g")).join("\n")
     }
     ,
     ue.prototype.getPrivateKey = function() {
-        var t = "-----BEGIN RSA PRIVATE KEY-----\\n";
-        return t += this.wordwrap(this.getPrivateBaseKeyB64()) + "\\n",
+        var t = "-----BEGIN RSA PRIVATE KEY-----\n";
+        return t += this.wordwrap(this.getPrivateBaseKeyB64()) + "\n",
         t += "-----END RSA PRIVATE KEY-----"
     }
     ,
     ue.prototype.getPublicKey = function() {
-        var t = "-----BEGIN PUBLIC KEY-----\\n";
-        return t += this.wordwrap(this.getPublicBaseKeyB64()) + "\\n",
+        var t = "-----BEGIN PUBLIC KEY-----\n";
+        return t += this.wordwrap(this.getPublicBaseKeyB64()) + "\n",
         t += "-----END PUBLIC KEY-----"
     }
     ,
@@ -2832,65 +2830,6 @@ navigator = {}; window=this;
     }
     ,
     ze.version = "2.3.1",
-    t.JSEncrypt = ze
+    JSEncrypt = ze
 });
-
-
-//add by wangp at 2018-01-23 密码加密方法 start
-function encrypt(pwd){
-	var key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsgDq4OqxuEisnk2F0EJFmw4xKa5IrcqEYHvqxPs2CHEg2kolhfWA2SjNuGAHxyDDE5MLtOvzuXjBx/5YJtc9zj2xR/0moesS+Vi/xtG1tkVaTCba+TV+Y5C61iyr3FGqr+KOD4/XECu0Xky1W9ZmmaFADmZi7+6gO9wjgVpU9aLcBcw/loHOeJrCqjp7pA98hRJRY+MML8MK15mnC4ebooOva+mJlstW6t/1lghR8WNV8cocxgcHHuXBxgns2MlACQbSdJ8c6Z3RQeRZBzyjfey6JCCfbEKouVrWIUuPphBL3OANfgp0B+QG31bapvePTfXU48TYK0M5kE+8LgbbWQIDAQAB";
-	var encrypt = new JSEncrypt();
-    encrypt.setPublicKey(key);
-    var encrypted = encrypt.encrypt(pwd);
-    return encrypted;
-}
-//add by wangp at 2018-01-23 密码加密方法 end
-
-/**
- * 加密（需要先加载lib/aes/aes.min.js文件）
- * @param word
- * @returns {*}
- */
-function encrypts(word){
-    var key = CryptoJS.enc.Utf8.parse("8ujhbnjhgfvb12bh");
-    var srcs = CryptoJS.enc.Utf8.parse(word);
-    var encrypted = CryptoJS.AES.encrypt(srcs, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
-    return encrypted.toString();
-}
-
-/**
- * 解密
- * @param word
- * @returns {*}
- */
-function decrypts(word){
-    var key = CryptoJS.enc.Utf8.parse("8ujhbnjhgfvb12bh");
-    var decrypt = CryptoJS.AES.decrypt(word, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
-    return CryptoJS.enc.Utf8.stringify(decrypt).toString();
-}
-"""
-
-ps_ = execjs.compile(js_).call("encrypt", "264271")  # TODO: 输入 账号 密码
-
-
-def load_data():
-    data = {}
-    with open("./data.txt", "rt", encoding="utf-8") as f:
-        read = f.readlines()
-        for line in read:
-            split_ = line.split(":")
-            data[split_[0]] = ":".join(split_[1:]).replace("\n", "").replace(" ", "")
-    return data
-
-
-data = load_data()
-data["password"] = ps_
-data["account"] = "13752599265"
-
-post_url = "https://login.10086.cn/login.htm?hY2cu2zt=53KM8sk34ju3EpvP5OZnB3PrX7r0ENu8BGe4onXt9XYqpBj_JRBlnpnbbw3tdK1qj7pKOrDB94ZwSqj0FucCcd0TFp5pYJGleyvzPxOxZ8RMKrwhbi2Af3VRx60CZZCtg5hxKkeNlouGQeOK2tHjpW3rqah0MTU4b.0SW.NWWW.lu.lb2cr7laCc91ffaQTWosIUtj7knbxI_vptdpZkIgpl8hJA0H.elygKpxuSkVVyxRJ6vjAISByiVW9dKDiCKZNXGeyVuaMNS5oO_5DJkTgvFriEt2muWiuNNxv3EkkmO79XwS3eWwzU9yC3IHxlr4bsPfLSpmRdfKXW2KjGVYGzmfI1Miu23guA3mq.5SJZ"
-
-r = requests.post(post_url, data=data)
-print(r.content.decode())
-
-
 

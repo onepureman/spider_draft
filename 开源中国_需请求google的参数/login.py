@@ -1,10 +1,8 @@
 """
-Base_Url: https://www.haodou.com/
+Base_Url: https://www.oschina.net/
 Author: jing
 Modify: 2020/10/22
 """
-
-
 
 import time
 import execjs
@@ -36,11 +34,7 @@ class Login(object):
         return pwd
 
     def login_(self):
-        data = self.load_data("data.txt")
-        data["identity"] = self.user
-
         pwd = self.get_pwd()
-        data["password"] = pwd
         print(pwd)
 
 
@@ -50,5 +44,9 @@ if __name__ == '__main__':
 
     login = Login(user, pwd)  # TODO: 输入账号&密码
     login.login_()
+
+
+
+
 
 
