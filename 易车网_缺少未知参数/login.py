@@ -1,0 +1,85 @@
+"""
+Base_Url:http://i.yiche.com/authenservice/login.html?returnurl=http%3A%2F%2Fwww.bitauto.com%2F
+Author:jing
+Modify:2020/11/10
+"""
+
+import time
+import execjs
+import requests
+from pprint import pprint
+import random
+
+
+class Login(object):
+
+    def __init__(self, user, pwd):
+        self.user = user
+        self.pwd = pwd
+        self.sess = requests.session()
+        self.sess.headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9",
+
+        }
+        self.login_url = "https://i.yiche.com/ajax/Authenservice/login2.ashx"
+
+    def get_pwd(self):
+        with open('./get_pwd.js', encoding='utf-8') as f:
+            js_pwd = f.read()
+        pwd = execjs.compile(js_pwd).call("getpwd", self.pwd)
+        return pwd
+
+    def load_data(self, path):
+        data = {}
+        with open(path, "rt", encoding="utf-8") as f:
+            read = f.readlines()
+            for line in read:
+                split_ = line.split(":")
+                data[split_[0]] = ":".join(split_[1:]).replace("\n", "").replace(" ", "")
+        return data
+
+    def get_captcha(self, guid):
+        url = "http://i.yiche.com/authenservice/common/CheckCode.aspx?guid=" + guid
+        response = self.sess.get(url)
+        with open("captcha.jpg", "wb") as f:
+            f.write(response.content)
+
+    def login_(self):
+        data = self.load_data("./data.txt")
+
+        self.sess.get("https://g.yccdn.com/autolog?v=" + str(int(time.time()*1000)))
+
+        pwd = self.get_pwd()
+
+        data["txt_Password"] = pwd
+        data["txt_LoginName"] = self.user
+
+        # 生成guid
+        guid_raw = []
+        for i in range(3):
+            guid_raw.append(str(random.randint(1, 100000000)))
+        guid = "-".join(guid_raw)
+        self.get_captcha(guid)
+        data["txt_Code"] = input("请输入验证码:")
+        data["guid"] = guid
+        pprint(data)
+
+        self.sess.headers["Referer"] = "https://i.yiche.com/authenservice/login.html"
+        self.sess.headers["Origin"] = "https://i.yiche.com"
+        res = self.sess.post(self.login_url, data=data)
+        print(res.content.decode())
+
+        self.sess.headers["x-user-guid"] = guid
+        response = self.sess.get("http://www.bitauto.com/web_api/user_center_api/api/v1/user/decrypt_user_info?cid=508&param=%7B%7D")
+        print(response.content.decode())
+
+
+if __name__ == '__main__':
+    user = "18513606785"
+    pwd = "15214544"
+
+    login = Login(user, pwd)  # TODO: 输入账号&密码
+    login.login_()

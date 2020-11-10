@@ -17,7 +17,11 @@ class Login(object):
         self.pwd = pwd
         self.sess = requests.session()
         self.sess.headers ={
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "zh-CN,zh;q=0.9",
+            "cache-control": "max-age=0",
         }
         self.login_url = "https://v4.passport.sohu.com/i/login/116005"
 
@@ -41,6 +45,9 @@ class Login(object):
         }
 
         pprint(data)
+
+        self.sess.headers["referer"] = "https://www.sohu.com/"
+        self.sess.headers["origin"] = "https://www.sohu.com"
 
         res = self.sess.post(self.login_url, data=data)
         print(res.content.decode())

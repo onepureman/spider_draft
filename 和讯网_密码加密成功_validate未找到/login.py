@@ -73,7 +73,7 @@ class Login(object):
         
         window.document = document;
         
-         const {JSEncrypt} = require("E:/pycharmproject/study_own/js_study/和讯网_密码加密成功_validate未找到/jsencrypt.js")
+         const {JSEncrypt} = require("E:/pycharmproject/study_own/js_study/和讯网_密码加密成功_validate未找到/get_pwd.js")
         
         
         function getpwd(pwd){

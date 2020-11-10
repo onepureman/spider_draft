@@ -1,0 +1,8 @@
+countryCode: +86
+mobile: 18513606
+password: Ptq0xFlidjAvSTTyfQJrgQ==
+passwordLength: 12
+passwordLevel: 1
+autoLogin: false
+ticket: aa6f707ab7f19e496d4f3dff8cd4d13e
+csrf_token: 110337354065895908877902543775428331383124536721455083470054597370449921147130

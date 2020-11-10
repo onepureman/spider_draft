@@ -1,0 +1,7 @@
+txt_LoginName: 18546254871
+txt_Password: 2fQraBcoauBlpY0EVkbMjj/5OeQtEjk3Ms5fAskiNRBpYPqhioj6X6nf+mB67KVs7qKlqizSmpOrGx0yUZdRPOOIke5GdHiHrcyeNPHLsj4r4n4sWqTZpvaIN5PVRa2PD9TuENXfGusHuz+CTgVaZcqCnLSmkgUN23ZPhP25XKA=
+txt_Code: 4087
+cbx_keepState: true
+returnurl: http://www.bitauto.com/
+guid: fdb4a042-e420-0960-1301-79f1c9415707
+Gamut: true

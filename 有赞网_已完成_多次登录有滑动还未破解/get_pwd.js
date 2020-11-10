@@ -1,16 +1,3 @@
-"""
-Base_Url: https://www.youzan.com/
-Author: jing
-Modify: 2020/10/22
-
-"""
-
-
-import execjs
-
-
-js_ = """
-
 var wGdk = function(t, e, n) {
         var r;
             var r, o, i = i || function(t, e) {
@@ -702,7 +689,7 @@ var wGdk = function(t, e, n) {
                 }
             }
             return i
- 
+
     }
 
 
@@ -710,7 +697,7 @@ var wGdk = function(t, e, n) {
 
 
 
-var encrypt =  function(t) {    
+var encrypt =  function(t) {
                     return t = e.enc.Utf8.parse(t),
                     e.AES.encrypt(t, o, {
                         mode: e.mode.CBC,
@@ -732,7 +719,3 @@ function getpwd(t){
                     }).toString()
 }
 
-"""
-pwd = execjs.compile(js_).call("getpwd", "222222")  # TODO: 输入 账号 密码
-
-print(pwd)

@@ -1,3 +1,11 @@
+navigator={}; window=this;
+function getpwd(pwd) {
+    var S = new JSEncrypt();
+    S.setPublicKey("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDhSuJhMKlDvYfdNziWxvcV0FFANWANlvlsqpD8ksbxCFiaiVsVy8+QGhB/rXCWMG0pVSCZ9mHHPrZeNzRMHtHB/2IBxCt1l6vZEgHlxGtvU6+X8nKMNH/RvaU9tq3tEIKEJ4OqRWbMwpP34PTyHunzT+yvgYgb4NK9P4ZkViURNQIDAQAB");
+    return S.encrypt(pwd)
+
+}
+
 !function(t, e) {
     "object" == typeof exports && "undefined" != typeof module ? e(exports) : "function" == typeof define && define.amd ? define(["exports"], e) : e(t.JSEncrypt = {})
 }(this, function(t) {
@@ -85,7 +93,7 @@
         var e;
         if (void 0 === l) {
             var i = "0123456789ABCDEF"
-              , r = " \f\n\r\t聽\u2028\u2029";
+              , r = " \f\n\r\t \u2028\u2029";
             for (l = {},
             e = 0; e < 16; ++e)
                 l[i.charAt(e)] = e;
@@ -117,7 +125,7 @@
         decode: function(t) {
             var e;
             if (void 0 === g) {
-                var i = "= \f\n\r\t聽\u2028\u2029";
+                var i = "= \f\n\r\t \u2028\u2029";
                 for (g = Object.create(null),
                 e = 0; e < 64; ++e)
                     g["ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(e)] = e;
@@ -208,7 +216,7 @@
         }
         ,
         t
-    }(), b = "鈥�", T = /^(\d\d)(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])([01]\d|2[0-3])(?:([0-5]\d)(?:([0-5]\d)(?:[.,](\d{1,3}))?)?)?(Z|[-+](?:[0]\d|1[0-2])([0-5]\d)?)?$/, S = /^(\d\d\d\d)(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])([01]\d|2[0-3])(?:([0-5]\d)(?:([0-5]\d)(?:[.,](\d{1,3}))?)?)?(Z|[-+](?:[0]\d|1[0-2])([0-5]\d)?)?$/;
+    }(), b = "…", T = /^(\d\d)(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])([01]\d|2[0-3])(?:([0-5]\d)(?:([0-5]\d)(?:[.,](\d{1,3}))?)?)?(Z|[-+](?:[0]\d|1[0-2])([0-5]\d)?)?$/, S = /^(\d\d\d\d)(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])([01]\d|2[0-3])(?:([0-5]\d)(?:([0-5]\d)(?:[.,](\d{1,3}))?)?)?(Z|[-+](?:[0]\d|1[0-2])([0-5]\d)?)?$/;
     function E(t, e) {
         return t.length > e && (t = t.substring(0, e) + b),
         t
