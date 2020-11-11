@@ -1,22 +1,4 @@
-"""
-Base_Url: https://maoyan.com/
-Author: jing
-Modify: 2020/10/22
-"""
-
-
-import execjs
-import requests
-
-
-class Login():
-
-    def __init__(self, user, pwd):
-        self.user = user
-        self.pwd = pwd
-
-    def get_pwd(self):
-        js_pwd = """
+navigator={};window=this;
 
             var BI_RM = "0123456789abcdefghijklmnopqrstuvwxyz";
             function int2char(n) {
@@ -5623,22 +5605,8 @@ version: 2.9.0
 function getpwd(pwd){
     var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCRD8YahHualjGxPMzeIWnAqVGMIrWrrkr5L7gw+5XT55iIuYXZYLaUFMTOD9iSyfKlL9mvD3ReUX6Lieph3ajJAPPGEuSHwoj5PN1UiQXK3wzAPKcpwrrA2V4Agu1/RZsyIuzboXgcPexyUYxYUTJH48DeYBGJe2GrYtsmzuIu6QIDAQAB";
     var encrypt = new JSEncrypt();
-    encrypt.setPublicKey(publicKey);
-    dataJson.password = encrypt.encrypt(pwd);
+    encrypt.setPublicKey(publicKey)
+    return encrypt.encrypt(pwd)
 
 }
 
-"""
-
-        pwd = execjs.compile(js_pwd).call("getpwd", "22222")
-        print(pwd)
-
-    def login_(self):
-        self.get_pwd()
-
-
-if __name__ == '__main__':
-    user = ""
-    pwd = ""
-    login = Login(user, pwd)  # TODO: 输入 账号 密码
-    login.login_()

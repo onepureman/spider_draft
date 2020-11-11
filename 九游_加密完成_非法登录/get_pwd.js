@@ -1,26 +1,5 @@
-"""
-
-Base_Url: http://uhg.9you.com/
- & https://passport.9you.com/login/ulogin.php?callback=loginCallbackNew&denyCallbackURL=http://uhg.9you.com/vip/Member/sso_deny&sid=7d769f33d6ae19c4fddf437dbf418309
-Author: jing
-Modify: 2020/10/22
-"""
 
 
-import execjs
-import requests
-
-
-class Login():
-    def __init__(self, user, pwd):
-        self.user = user
-        self.pwd = pwd
-        self.sess = requests.session()
-
-
-    def getpwd(self):
-        js_pwd = """
-        
         !function(a) {
     "use strict";
     function b(a, b) {
@@ -183,48 +162,8 @@ class Login():
     }) : a.md5 = t
 }(this);
 
-        
+
         function getpwd(pwd){
         hashKey= 'hgfdherwerehjtyutr'
          return md5(md5(pwd).split("").reverse().join("") + this.hashKey);
         }
-        """
-        pwd = execjs.compile(js_pwd).call("getpwd", self.pwd)
-        print(pwd)
-
-
-    def get_captcha(self):
-        response = self.sess.get("https://login.passport.9you.com/identifyingCode.jsp?0.7676386687853862")
-        with open("captcha.png", "wb") as f:
-            f.write(response.content)
-
-    def login_(self):
-        self.sess.get("http://uhg.9you.com/")
-
-        self.get_captcha()
-        login_url_raw = "https://login.passport.9you.com/checkJCode?callback=_jqjsp&userName={}&password={}&id=LX_GAME&identifyingCode={}&&_1603086662042="
-        login_url = login_url_raw.format(self.user, self.pwd, input("请输入验证码："))
-
-        self.sess.headers = {
-            "Accept": "*/*",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Accept-Language": "zh-CN,zh;q=0.9",
-            "Connection": "keep-alive",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
-            "Host": "login.passport.9you.com",
-            "Sec-Fetch-Mode": "no-cors",
-            "Sec-Fetch-Site": "same-site",
-
-        }
-
-        response = self.sess.get(login_url)
-        print(response.content.decode())
-
-
-if __name__ == '__main__':
-    user = ""
-    pwd = ""
-
-    login = Login(user, pwd)  # TODO: 输入 账号 密码
-
-    login.login_()

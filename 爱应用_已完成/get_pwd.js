@@ -1,18 +1,4 @@
 
-"""
-Base_Url: http://www.iapps.im/
-Author: jing
-Modify: 2020/10/22
-"""
-
-import requests
-
-import execjs
-from pprint import pprint
-
-
-def get_password(password):
-    js_ = """
     navigator = {}; window=this;
     function BigInteger(t, i, r) {
         null != t && ("number" == typeof t ? this.fromNumber(t, i, r) : null == i && "string" != typeof t ? this.fromString(t, 256) : this.fromString(t, i))
@@ -668,20 +654,3 @@ def get_password(password):
         password = hex2b64(rsa.encrypt(pwd));
         return password;
         }
-    """
-    pwd = execjs.compile(js_).call("getpwd", password)
-    return pwd
-
-
-if __name__ == '__main__':
-    use = ""
-    password = ""  # TODO: 输入 账号 密码
-
-    pwd = get_password(password)
-
-    data = {
-        "username": use,
-        "password": pwd}
-
-    r = requests.post("http://www.iappstoday.com/ajax/login", data=data)
-    print(r.content.decode())

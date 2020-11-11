@@ -1,29 +1,13 @@
-"""
-Base_Url: http://www.kongzhong.com/
-Author: jing
-Modify: 2020/10/22
-"""
-
-import execjs
-import requests
-from requests import session
+navigator={};window=this;
+function getpwd(pwd) {
+    var encrypt = new JSEncrypt();
+    encrypt.setPublicKey('-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrWVnSOu9m7O8X3taQGXzVlB9B0Gw1Mvbc0MxKZOxT8SlQVB1Krpu3KfuoxgGE1TikX/JkYJf+D4tTqENqk5pnSZc784gWZPEs2O+uz5R/8Ay8qP06uHDzw1oGDrpo8wxWQ7Ae2IwE2gTDtpcyg8NUJp14uYwsvA47iDpXHGmPxQIDAQAB-----END PUBLIC KEY-----');
+    return encrypt.encrypt(pwd);
+}
 
 
-class Login(object):
-    def __init__(self, user,pwd):
-        self.pwd = pwd
-        self.user = user
-        self.sess = session()
-        self.login_url = "https://passport.zhulong.com/openapi/user/userLoginNewAuth"
-        self.sess.headers = {
-            "User-Agent":
-                "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
-        }
 
-    def get_pwd(self):
-        pwd_js = """
-        navigator={};window=this;
-        !function(t, e) {
+!function(t, e) {
     "function" == typeof define && define.amd ? define(["exports"], e) : e("object" == typeof exports && "string" != typeof exports.nodeName ? module.exports : t)
 }(this, function(t) {
     function e(t, e, i) {
@@ -1535,9 +1519,9 @@ class Login(object):
         this.getPEMStringFromHex = function(t, e) {
             var i = CryptoJS.enc.Hex.parse(t)
               , r = CryptoJS.enc.Base64.stringify(i)
-              , s = r.replace(/(.{64})/g, "$1\\r\\n");
-            return s = s.replace(/\\r\\n$/, ""),
-            "-----BEGIN " + e + "-----\\r\\n" + s + "\\r\\n-----END " + e + "-----\\r\\n"
+              , s = r.replace(/(.{64})/g, "$1\r\n");
+            return s = s.replace(/\r\n$/, ""),
+            "-----BEGIN " + e + "-----\r\n" + s + "\r\n-----END " + e + "-----\r\n"
         }
     }
     ,
@@ -1960,7 +1944,7 @@ class Login(object):
             var r;
             if (e === t) {
                 var s = "0123456789ABCDEF"
-                  , n = " \f\\n\\r	 \u2028\u2029";
+                  , n = " \f\n\r	 \u2028\u2029";
                 for (e = [],
                 r = 0; 16 > r; ++r)
                     e[s.charAt(r)] = r;
@@ -2001,7 +1985,7 @@ class Login(object):
             var r;
             if (e === t) {
                 var s = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-                  , n = "= \f\\n\\r	 \u2028\u2029";
+                  , n = "= \f\n\r	 \u2028\u2029";
                 for (e = [],
                 r = 0; 64 > r; ++r)
                     e[s.charAt(r)] = r;
@@ -2040,7 +2024,7 @@ class Login(object):
             return o
         }
         ,
-        i.re = /-----BEGIN [^-]+-----([A-Za-z0-9+\/=\s]+)-----END [^-]+-----|begin-base64[^\\n]+\\n([A-Za-z0-9+\/=\s]+)====/,
+        i.re = /-----BEGIN [^-]+-----([A-Za-z0-9+\/=\s]+)-----END [^-]+-----|begin-base64[^\n]+\n([A-Za-z0-9+\/=\s]+)====/,
         i.unarmor = function(t) {
             var e = i.re.exec(t);
             if (e)
@@ -2103,7 +2087,7 @@ class Login(object):
                         r += "  ";
                         break;
                     case 15:
-                        r += "\\n";
+                        r += "\n";
                         break;
                     default:
                         r += " "
@@ -2350,7 +2334,7 @@ class Login(object):
             if (this.length >= 0 && (i += "+"),
             i += this.length,
             32 & this.tag ? i += " (constructed)" : 3 != this.tag && 4 != this.tag || null === this.sub || (i += " (encapsulates)"),
-            i += "\\n",
+            i += "\n",
             null !== this.sub) {
                 e += "  ";
                 for (var r = 0, s = this.sub.length; s > r; ++r)
@@ -2557,7 +2541,7 @@ class Login(object):
             }], r = 0, s = t.length; s > r; ++r) {
                 var n = new e(t[r].value,0)
                   , o = i.decodeLength(n);
-                o != t[r].expected && document.write("In test[" + r + "] expected " + t[r].expected + " got " + o + "\\n")
+                o != t[r].expected && document.write("In test[" + r + "] expected " + t[r].expected + " got " + o + "\n")
             }
         }
         ,
@@ -2675,19 +2659,19 @@ class Login(object):
         if (e = e || 64,
         !t)
             return t;
-        var i = "(.{1," + e + "})( +|$\\n?)|(.{1," + e + "})";
-        return t.match(RegExp(i, "g")).join("\\n")
+        var i = "(.{1," + e + "})( +|$\n?)|(.{1," + e + "})";
+        return t.match(RegExp(i, "g")).join("\n")
     }
     ,
     ue.prototype.getPrivateKey = function() {
-        var t = "-----BEGIN RSA PRIVATE KEY-----\\n";
-        return t += this.wordwrap(this.getPrivateBaseKeyB64()) + "\\n",
+        var t = "-----BEGIN RSA PRIVATE KEY-----\n";
+        return t += this.wordwrap(this.getPrivateBaseKeyB64()) + "\n",
         t += "-----END RSA PRIVATE KEY-----"
     }
     ,
     ue.prototype.getPublicKey = function() {
-        var t = "-----BEGIN PUBLIC KEY-----\\n";
-        return t += this.wordwrap(this.getPublicBaseKeyB64()) + "\\n",
+        var t = "-----BEGIN PUBLIC KEY-----\n";
+        return t += this.wordwrap(this.getPublicBaseKeyB64()) + "\n",
         t += "-----END PUBLIC KEY-----"
     }
     ,
@@ -2781,42 +2765,5 @@ class Login(object):
     }
     ,
     ze.version = "2.3.1",
-    t.JSEncrypt = ze
+    JSEncrypt = ze
 });
-        
-        function getpwd(pwd) {
-        var encrypt = new JSEncrypt();
-        encrypt.setPublicKey('-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrWVnSOu9m7O8X3taQGXzVlB9B0Gw1Mvbc0MxKZOxT8SlQVB1Krpu3KfuoxgGE1TikX/JkYJf+D4tTqENqk5pnSZc784gWZPEs2O+uz5R/8Ay8qP06uHDzw1oGDrpo8wxWQ7Ae2IwE2gTDtpcyg8NUJp14uYwsvA47iDpXHGmPxQIDAQAB-----END PUBLIC KEY-----');
-        return encrypt.encrypt(pwd);
-}
-        
-        """
-        pwd = execjs.compile(pwd_js).call("getpwd", self.pwd)
-        return pwd
-
-    def login(self):
-        data = {
-
-            "cookieday": "10",
-            "loginName": self.user,
-            "passwd": self.get_pwd(),
-            "dataformat": "custom",
-            "callback": "parent.showlogin",
-            "fromUrl": "https://passport.zhulong.com/user/login",
-            "seccode": "",
-            "ignoreMobile": "0",
-        }
-
-        self.sess.post(self.login_url, data=data)
-
-        r = self.sess.get("https://message.zhulong.com/openjson/getMessageInfo?member_uid=0&callback=jQuery1830394389132959285_1602830186274&ajax=1&time=0.2517303862633977&_=1602830186493")
-        print(r.content.decode())
-
-
-if __name__ == '__main__':
-
-    user = ""
-    pwd = ""
-
-    login = Login(user, pwd)   # TODO: 输入 账号 密码
-    login.login()
