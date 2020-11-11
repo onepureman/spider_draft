@@ -1,8 +1,9 @@
 """
-Base_Url:
-Author:
-Modify:
+Base_Url: https://bj.meituan.com/
+Author: jing
+Modify: 2020/10/22
 """
+
 
 import time
 import execjs
@@ -16,9 +17,6 @@ class Login(object):
         self.user = user
         self.pwd = pwd
         self.sess = requests.session()
-        self.sess.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
-            }
         self.login_url = ""
 
     def load_data(self, path):

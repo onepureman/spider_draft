@@ -1,20 +1,4 @@
-"""
-Base_Url: http://web.lkgame.com/
-Author: jing
-Modify: 2020/10/22
-"""
 
-import execjs
-import requests
-from pprint import pprint
-
-
-class Login():
-    def __init__(self):
-        self.sess = requests.session()
-
-    def get_pwd(self):
-        js_pwd = """
         window=this;
         (function(a) {
     var f = a.document
@@ -475,46 +459,12 @@ class Login():
     r.LKRSA = new cb
 }
 )(window);
-        function get_pwd_u(user, pwd){
+        function getpwd(user, pwd){
             var RSAExponent = "010001";
             var RSAModulus = "C7A33AF734DB563D8B34B62E55A463B90DC9BC0A81DD14EEC2E50368F58167805A3F16F2704874EF31A4FA877961E5A067CA6A8728AD069AE05CC1F635338BFC8B097DED72150C1C60408173173388BAB6FC5C531411C6C9FE8338E7AD1FCA449F35D9474BAECCF9D7105AA835EE3EE5E7427F76EB70CE653234B64E912ED2B7",
-        
+
             i = LKRSA.GetRSAKey(RSAExponent, "", RSAModulus)
             l = LKEncoder.ToBase64(user)
             k = LKRSA.Encrypt(i, LKEncoder.ToBase64(pwd))
             return [l, k]
-        } 
-        """
-        u_p = execjs.compile(js_pwd).call("get_pwd_u", "222", "3333")   # TODO: 输入 账号 密码
-        return u_p
-
-    def get_captcha(self):
-        js_captcha = """
-        function url(){
-            return 'http://login.lkgame.com/Sso/GetValidCode?'+ Math.random();
-            }
-        """
-        url = execjs.compile(js_captcha).call("url")
-        response = self.sess.get(url)
-        with open("captcha.jpg", "wb") as f:
-            f.write(response.content)
-
-    def login_(self):
-        user_pwd = self.get_pwd()
-        self.get_captcha()
-        data = {
-            "lku": user_pwd[0],
-            "lkp": user_pwd[1],
-            "url": "http://web.lkgame.com/Sso/AjaxLogin?callback=parent.SsoIndex.AjaxSsoLoginCB",
-            "vcode": input("请输入验证码："),
-            "encoding": "utf-8",
         }
-        pprint(data)
-        response = self.sess.post("http://login.lkgame.com/Sso/Login", data=data)
-        print(response.content.decode())
-
-
-if __name__ == '__main__':
-
-    login = Login()
-    login.login_()

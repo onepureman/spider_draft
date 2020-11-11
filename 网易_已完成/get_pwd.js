@@ -1,4 +1,9 @@
-function BigInteger(e, t, i) {
+
+        navigator={};window=this;
+        var dbits;
+        var canary = 0xdeadbeefcafe;
+        var j_lm = 15715070 == (16777215 & canary);
+      function BigInteger(e, t, i) {
     if (null != e)
         if ("number" == typeof e)
             this.fromNumber(e, t, i);
@@ -1732,5 +1737,6 @@ var RSA = {
             var h = "-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC5gsH+AA4XWONB5TDcUd+xCz7ejOFHZKlcZDx+pF1i7Gsvi1vjyJoQhRtRSn950x498VUkx7rUxg1/ScBVfrRxQOZ8xFBye3pjAzfb22+RCuYApSVpJ3OO3KsEuKExftz9oFBv3ejxPlYc5yq7YiBO8XlTnQN0Sa4R4qhPO3I2MQIDAQAB-----END PUBLIC KEY-----";
             var t = RSA.getPublicKey(h);
             return RSA.encrypt(pwd, t)
-
+        
         }
+        

@@ -1,8 +1,9 @@
 """
-Base_Url:
-Author:
-Modify:
+Base_Url: https://www.huya.com/?ptag=gouzai&rso=huya_h5_395
+Author: jing
+Modify: 2020/10/22
 """
+
 
 import time
 import execjs

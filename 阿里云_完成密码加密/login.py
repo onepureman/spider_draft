@@ -692,13 +692,14 @@ window.document = document;
     
         """
 
-        ua = execjs.compile(js_ua, cwd=r'E:\node\node_modules\npm\node_modules').call("get_ua")
+        ua = execjs.compile(js_ua, cwd=r'E:\Znode\node_modules\npm\node_modules').call("get_ua")
         return ua
 
     def login_(self):
         pwd = self.get_pwd()
-        ua = self.get_ua()
-        print(ua)
+        print(pwd)
+        # ua = self.get_ua()
+        # print(ua)
 
 
 if __name__ == '__main__':

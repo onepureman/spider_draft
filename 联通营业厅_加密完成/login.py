@@ -1,7 +1,7 @@
 """
-Base_Url:
-Author:
-Modify:
+Base_Url:https://uac.10010.com/portal/mallLogin.jsp?redirectURL=http://www.10010.com/net5/
+Author:jing
+Modify:2020/11/11
 """
 
 import time
@@ -16,9 +16,6 @@ class Login(object):
         self.user = user
         self.pwd = pwd
         self.sess = requests.session()
-        self.sess.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
-            }
         self.login_url = ""
 
     def load_data(self, path):
@@ -33,7 +30,7 @@ class Login(object):
     def get_pwd(self):
         with open('./get_pwd.js', encoding='utf-8') as f:
             js_pwd = f.read()
-        pwd = execjs.compile(js_pwd).call("getpwd", self.pwd)
+        pwd = execjs.compile(js_pwd, cwd=r'E:\node\node_modules\npm\node_modules').call("getpwd", self.pwd)
         return pwd
 
     def login_(self):
