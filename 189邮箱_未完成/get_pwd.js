@@ -57,6 +57,88 @@ function getpwd(pwd){
      return RSA_Pwd.rsaPwd(pwd)
 }
 
+function ajax(options) {
+    function empty() {}
+    function obj2Url(obj) {
+        if (obj && obj instanceof Object) {
+            var arr = [];
+            for (var i in obj)
+                obj.hasOwnProperty(i) && ("function" == typeof obj[i] && (obj[i] = obj[i]()),
+                null === obj[i] && (obj[i] = ""),
+                arr.push(escape(i) + "=" + escape(obj[i])));
+            return arr.join("&").replace(/%20/g, "+")
+        }
+        return obj
+    }
+    var opt = {
+        url: "",
+        sync: !0,
+        method: "GET",
+        data: null,
+        username: null,
+        password: null,
+        dataType: null,
+        success: empty,
+        error: empty,
+        timeout: 0,
+        header: null
+    };
+    for (var i in options)
+        options.hasOwnProperty(i) && (opt[i] = options[i]);
+    var accepts = {
+        script: "text/javascript, application/javascript, application/x-javascript",
+        json: "application/json",
+        xml: "application/xml, text/xml",
+        html: "text/html",
+        text: "text/plain"
+    }
+      , abortTimeout = null
+      , xhr = new XMLHttpRequest;
+    if (xhr.onreadystatechange = function() {
+        if (4 === xhr.readyState) {
+            xhr.onreadystatechange = empty,
+            clearTimeout(abortTimeout);
+            var protocol = /^([\w-]+:)\/\//.test(options.url) ? RegExp.$1 : window.location.protocol, result, dataType;
+            if (200 <= xhr.status && xhr.status < 300 || 304 === xhr.status || 0 === xhr.status && "file:" === protocol) {
+                if ("arraybuffer" === xhr.responseType || "blob" === xhr.responseType)
+                    result = xhr.response;
+                else {
+                    for (var i in result = xhr.responseText,
+                    dataType = opt.dataType ? opt.dataType : xhr.getResponseHeader("content-type").split(";", 1)[0],
+                    accepts)
+                        accepts.hasOwnProperty(i) && -1 < accepts[i].indexOf(dataType) && (dataType = i);
+                    try {
+                        "script" === dataType ? /^[\d\-\+]*$/.test(result) && eval(result) : "xml" === dataType ? result = xhr.responseXML : "json" === dataType && (result = "" === result.trim() ? null : JSON.parse(result))
+                    } catch (e) {
+                        opt.error(e, xhr),
+                        xhr.abort()
+                    }
+                }
+                opt.success(result, xhr)
+            } else
+                opt.error(xhr.statusText, xhr)
+        }
+    }
+    ,
+    "GET" === opt.method) {
+        var parse = opt.url.parseURL();
+        opt.data = Object.assign({}, opt.data, parse.params),
+        opt.url = parse.pathname + "?" + obj2Url(opt.data),
+        opt.data = null
+    }
+    if (xhr.open(opt.method, opt.url, opt.sync, opt.username, opt.password, opt.header),
+    "POST" === opt.method && (xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
+    null !== opt.header))
+        for (var item in opt.header)
+            xhr.setRequestHeader(item, opt.header[item]);
+    0 < opt.timeout && (abortTimeout = setTimeout(function() {
+        xhr.onreadystatechange = empty,
+        xhr.abort(),
+        opt.error("timeout", xhr)
+    }, opt.timeout)),
+    xhr.send(opt.data ? obj2Url(opt.data) : null)
+}
+
 var JSEncryptExports = {};
 !function(exports) {
     function BigInteger(a, b, c) {
