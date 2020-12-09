@@ -241,5 +241,5 @@ class Login(object):
 
 
 if __name__ == '__main__':
-    login = Login("18513606786", "jing1995")  # TODO: 输入 账号 密码
+    login = Login("", "")  # TODO: 输入 账号 密码
     login.login_()

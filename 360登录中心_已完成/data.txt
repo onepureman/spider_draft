@@ -12,11 +12,11 @@ rtype: data
 validatelm: 0
 isKeepAlive: 1
 captchaApp: i360
-userName: 18513606786
+userName:
 smDeviceId:
 type: normal
-account: 18513606786
-password: 1bbd886460827015e5d605ed44252251
+account:
+password:
 captcha:
 token: a18a5109595f31d8
 proxy: https://i.360.cn/psp_jump.html
