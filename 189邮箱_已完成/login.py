@@ -1,7 +1,7 @@
 """
 Base_Url:https://webmail30.189.cn/w2/
 Author:jing
-Modify:2020/10/30
+Modify:2020/12/9
 """
 
 import time
@@ -31,7 +31,7 @@ class Login(object):
 
 if __name__ == '__main__':
     user = ""
-    pwd = "18513627854"
+    pwd = ""
 
-    login = Login(user, pwd)  # TODO: 输入账号&密码
+    login = Login(user, pwd)  # TODO: 输入账号&密码  可能会出现 填写验证码的情况 可参照本项目中的其他含有验证码的网站 如 58同城
     login.login_()
