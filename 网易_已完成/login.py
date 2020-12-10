@@ -2,6 +2,7 @@
 Base_Url: https://www.163.com/?referFrom=undefined
 Author: jing
 Modify: 2020/10/22
+Notes: 部分参数修改之后  通用于 网易号（http://mp.163.com/login.html?url=http%3A%2F%2Fmp.163.com%2F）
 """
 
 

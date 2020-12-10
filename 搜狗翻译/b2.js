@@ -1632,7 +1632,7 @@
                     }
                 }
             }), t._v(" "), n("li", {
-                "staticClass": "icon-weibo", "on": {
+                "staticClass": "icon-微博_未完成", "on": {
                     "click": function (e) {
                         return t.otherLogin("sina")
                     }

@@ -2,6 +2,7 @@
 Base_Url:https://www.sohu.com/
 Author:jing
 Modify:2020/10/28
+Notes: 部分参数修改之后  通用于 搜狐号（https://mp.sohu.com/mpfe/v3/login）
 """
 
 import execjs
