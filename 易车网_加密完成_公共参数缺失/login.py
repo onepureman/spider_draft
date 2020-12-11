@@ -9,6 +9,8 @@ import execjs
 import requests
 from pprint import pprint
 import random
+import uuid
+import re
 
 
 class Login(object):
@@ -49,19 +51,18 @@ class Login(object):
 
     def login_(self):
         data = self.load_data("./data.txt")
-
+        res = self.sess.get('https://i.yiche.com/authenservice/login.html?returnurl=http%3A%2F%2Fwww.bitauto.com%2F')
+        url = re.findall("hm.src = \"(.*?)\";", res.content.decode())[0]
+        cookies_ = re.findall("https://hm.baidu.com/hm.js\?(.*)", url)[0]
         self.sess.get("https://g.yccdn.com/autolog?v=" + str(int(time.time()*1000)))
+        self.sess.get(url)
 
         pwd = self.get_pwd()
 
         data["txt_Password"] = pwd
         data["txt_LoginName"] = self.user
 
-        # 生成guid
-        guid_raw = []
-        for i in range(3):
-            guid_raw.append(str(random.randint(1, 100000000)))
-        guid = "-".join(guid_raw)
+        guid = str(uuid.uuid4())
         self.get_captcha(guid)
         data["txt_Code"] = input("请输入验证码:")
         data["guid"] = guid
@@ -69,6 +70,9 @@ class Login(object):
 
         self.sess.headers["Referer"] = "https://i.yiche.com/authenservice/login.html"
         self.sess.headers["Origin"] = "https://i.yiche.com"
+        time_ = str(time.time())
+        self.sess.cookies.set("Hm_lvt_" + cookies_, time_)
+        self.sess.cookies.set("Hm_lpvt_" + cookies_, time_)
         res = self.sess.post(self.login_url, data=data)
         print(res.content.decode())
 
@@ -83,3 +87,4 @@ if __name__ == '__main__':
 
     login = Login(user, pwd)  # TODO: 输入账号&密码
     login.login_()
+

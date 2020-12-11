@@ -50,9 +50,9 @@ Object.assign(window,params);
 window.document = document;
 
 
-function getpwd(pwd) {
+function getpwd(pwd, pubkey) {
      var encrypt = new JSEncrypt();
-     encrypt.setPublicKey("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDbG81EEFjLT9rXT/1E2Qd3VwRg8Fe4QNtWHvfZ7od08ldAEPKLMU4oRKqQgAjGAe81IkzeZvr9Inj6bPo3vHS/U8DYq9tyxGHgZ1gcEKtSRPFak2J3ldciR7wsPPNCBq3n6WiDqKaIeiWSoElZH9ofZUIE2/xPISE4t025joM0xwIDAQAB");
+     encrypt.setPublicKey(pubkey);
      return encrypt.encrypt(pwd);
 }
 

@@ -33,8 +33,8 @@ class Login(object):
         return data
 
 
-
     def login_(self):
+        self.sess.get("https://www.douban.com/")
         data = {
             "ck":"",
             "remember": "true",

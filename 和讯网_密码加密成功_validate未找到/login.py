@@ -17,18 +17,24 @@ class Login(object):
         self.pwd = pwd
         self.sess = requests.session()
         self.login_url = ""
+        self.sess.headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+        }
 
-    def get_pwd(self):
+    def get_pwd(self, pubkey):
         with open('./get_pwd.js', encoding='utf-8') as f:
             js_pwd = f.read()
 
-        pwd = execjs.compile(js_pwd, cwd=r'E:\node\node_modules\npm\node_modules').call("getpwd", self.pwd)
-
+        pwd = execjs.compile(js_pwd, cwd=r'E:\node\node_modules\npm\node_modules').call("getpwd", self.pwd, pubkey)
 
         return pwd
 
     def login_(self):
-        pwd = self.get_pwd()
+        self.sess.get("http://www.hexun.com/")
+        data = {"appid": "9073746913", "act": "get"}
+        pubkey = self.sess.post("https://reg.hexun.com/wapreg/pubkey.aspx", data=data).json()["data"]["pubkey"]
+
+        pwd = self.get_pwd(pubkey)
         print(pwd)
 
 
@@ -38,5 +44,3 @@ if __name__ == '__main__':
 
     login = Login(user, pwd)  # TODO: 输入账号&密码
     login.login_()
-
-
