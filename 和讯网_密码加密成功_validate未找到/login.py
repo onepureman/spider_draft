@@ -19,73 +19,12 @@ class Login(object):
         self.login_url = ""
 
     def get_pwd(self):
-
-        js_pwd = """
-         const jsdom = require("jsdom");
-        const { JSDOM } = jsdom;
-        const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
-        window = global;
-        var document = dom.window.document;
-        var params = {
-            location:{
-                hash: "",
-                host: "www.toutiao.com",
-                hostname: "www.toutiao.com",
-                href: "https://www.toutiao.com",
-                origin: "https://www.toutiao.com",
-                pathname: "/",
-                port: "",
-                protocol: "https:",
-                search: "",
-            },
-            navigator:{
-                appCodeName: "Mozilla",
-                appName: "Netscape",
-                appVersion: "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36",
-                cookieEnabled: true,
-                deviceMemory: 8,
-                doNotTrack: null,
-                hardwareConcurrency: 4,
-                language: "zh-CN",
-                languages: ["zh-CN", "zh"],
-                maxTouchPoints: 0,
-                onLine: true,
-                platform: "Win32",
-                product: "Gecko",
-                productSub: "20030107",
-                userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36",
-                vendor: "Google Inc.",
-                vendorSub: "",
-            },
-            "screen":{
-                availHeight: 1040,
-                availLeft: 0,
-                availTop: 0,
-                availWidth: 1920,
-                colorDepth: 24,
-                height: 1080,
-                pixelDepth: 24,
-                width: 1920,
-            }
-        };
-        Object.assign(window,params);
-        
-        
-        window.document = document;
-        
-         const {JSEncrypt} = require("E:/pycharmproject/study_own/js_study/和讯网_密码加密成功_validate未找到/get_pwd.js")
-        
-        
-        function getpwd(pwd){
-            var encrypt = new JSEncrypt();
-            // clientkey = result.data.key;
-            encrypt.setPublicKey("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCdNu0QaRmMbBEUmvy8NxNf2MSoggxSlt0zd5Kmdg8mLhmifd9D2xAF2vf9bRc40NKCHI+wXJzO3Bhb1C+sLmLW8X05/K0vTBbi2xyVfL/YoRnZqzxYy1BUgPH2NznKx1k+Bgr9S34oRDoSX4wm3JKZt1LOVT1FjNZ0g80Xqq5RbwIDAQAB");
-            return encrypt.encrypt(pwd);
-        }
-        
-        """
+        with open('./get_pwd.js', encoding='utf-8') as f:
+            js_pwd = f.read()
 
         pwd = execjs.compile(js_pwd, cwd=r'E:\node\node_modules\npm\node_modules').call("getpwd", self.pwd)
+
+
         return pwd
 
     def login_(self):

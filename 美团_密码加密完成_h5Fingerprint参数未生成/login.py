@@ -34,9 +34,18 @@ class Login(object):
         pwd = execjs.compile(js_pwd).call("getpwd", self.pwd)
         return pwd
 
+    def get_h5(self):
+        # chrome 中运行的js 可以得到正常的返回  execjs 中报错 待解决
+        with open('./get_h5.js', encoding='utf-8') as f:
+            js_h5 = f.read()
+        h5 = execjs.compile(js_h5, cwd=r'E:\node\node_modules\npm\node_modules').call("h5")
+        return h5
+
     def login_(self):
-        pwd = self.get_pwd()
-        print(pwd)
+        # pwd = self.get_pwd()
+        # print(pwd)
+        h5 = self.get_h5()
+        print(h5)
 
 
 if __name__ == '__main__':
