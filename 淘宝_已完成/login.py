@@ -2,11 +2,15 @@
 Base_Url: https://www.taobao.com/
 Author: jing
 Modify: 2020/10/22
+Notes:2020/12/14发现得定期更新 ua 参数 但execjs 生成ua的方法执行还是无法正常返回， 后续解决生成ua问题
 """
 
 import execjs
 import requests
 import re
+import sys
+import os
+os.chdir(os.path.dirname(__file__))
 
 
 class Login(object):
@@ -635,10 +639,11 @@ class Login(object):
     # 登录，   未加成功与否的判断
     def login_(self):
         data = self.read_data()
-        print(data)
+
         self.session.post(self.login_url, data=data)
 
         r2 = self.session.get("https://i.taobao.com/my_taobao.htm?spm=a21bo.2017.754894437.3.5af911d9fM97Ej&ad_id=&am_id=&cm_id=&pm_id=1501036000a02c5c3739")
+
         find = re.findall(self.user, r2.content.decode("gbk"))
         if len(find) > 0:
             return True

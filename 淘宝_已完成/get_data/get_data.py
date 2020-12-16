@@ -1,5 +1,10 @@
 import requests
 from lxml import etree
+import os
+import sys
+os.chdir(os.path.dirname(__file__))
+sys.path.append("..")
+from login import Login
 
 
 class GetData():
@@ -10,16 +15,19 @@ class GetData():
         pass
 
     def run(self):
-        res = requests.get(self.base_url)
-
-        html = etree.HTML(res.content.decode())
-
-        div_list = html.xpath("//div[@class='items']/div")
-
-        for div in div_list:
-            div.xpath("./")
-
-        print(res.content.decode())
+        login = Login("", "").login_()
+        if login:
+            print("dengli")
+            # res = requests.get(self.base_url)
+            #
+            # html = etree.HTML(res.content.decode())
+            #
+            # div_list = html.xpath("//div[@class='items']/div")
+            #
+            # for div in div_list:
+            #     div.xpath("./")
+            #
+            # print(res.content.decode())
 
 
 if __name__ == '__main__':

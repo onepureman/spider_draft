@@ -1,10 +1,9 @@
 """
 Base_Url:https://user.qunar.com/passport/loginx.jsp
 Author:jing
-Modify:
-Notes: 未能成功登陆  {"data":{"needCaptcha":true},"errcode":0,"errkey":"password","errmsg":"验证码验证失败","ret":false,"ver":0}
+Modify:2020/12/11
 """
-
+import uuid
 import time
 import execjs
 import requests
@@ -46,6 +45,7 @@ class Login(object):
             "vcode": input("请输入验证码"),
         }
 
+        self.sess.cookies.set("QN271", str(uuid.uuid4()))
         res = self.sess.post(self.login_url, data=data)
         print(res.content.decode())
 
