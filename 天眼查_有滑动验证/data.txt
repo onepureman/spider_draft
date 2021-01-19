@@ -1,7 +1,0 @@
-autoLogin: false
-cdpassword: e11170b8cbd2d74102651cb967fa28e5
-challenge: 132e75e34f0cd6e16d583f093d8a59f16s
-loginway: PL
-mobile:
-seccode: 8f27ae38999ff7380dce1dd88800974d|jordan
-validate: 8f27ae38999ff7380dce1dd88800974d

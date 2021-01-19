@@ -47,8 +47,6 @@ class Login(object):
         response = self.sess.post(self.login_url, data=data)
         print(response.content.decode())
 
-
-
         #
         # print(response.content.decode())
         #

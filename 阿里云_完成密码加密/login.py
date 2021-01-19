@@ -3,7 +3,7 @@ Base_Url:https://account.aliyun.com/login/qr_login.htm?spm=5176.19720258.J_80588
 Author:jing
 Modify:2020/10/28
 """
-
+import os
 import time
 import execjs
 import requests
@@ -630,76 +630,18 @@ class Login(object):
         return pwd
 
     def get_ua(self):
-        js_ua = """
-        const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
-window = global;
-var document = dom.window.document;
-var params = {
-    location:{
-        hash: "",
-        host: "www.toutiao.com",
-        hostname: "www.toutiao.com",
-        href: "https://www.toutiao.com",
-        origin: "https://www.toutiao.com",
-        pathname: "/",
-        port: "",
-        protocol: "https:",
-        search: "",
-    },
-    navigator:{
-        appCodeName: "Mozilla",
-        appName: "Netscape",
-        appVersion: "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36",
-        cookieEnabled: true,
-        deviceMemory: 8,
-        doNotTrack: null,
-        hardwareConcurrency: 4,
-        language: "zh-CN",
-        languages: ["zh-CN", "zh"],
-        maxTouchPoints: 0,
-        onLine: true,
-        platform: "Win32",
-        product: "Gecko",
-        productSub: "20030107",
-        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36",
-        vendor: "Google Inc.",
-        vendorSub: "",
-    },
-    "screen":{
-        availHeight: 1040,
-        availLeft: 0,
-        availTop: 0,
-        availWidth: 1920,
-        colorDepth: 24,
-        height: 1080,
-        pixelDepth: 24,
-        width: 1920,
-    }
-};
-Object.assign(window,params);
+        with open('./ua.js', encoding='utf-8') as f:
+            js_pwd = f.read()
+        ua = execjs.compile(js_pwd, cwd=r'E:\node\node_modules\npm\node_modules').call("getua")
 
-
-window.document = document;
-        const {UA} = require("E:/pycharmproject/study_own/js_study/阿里云_完成密码加密/ua.js")
-        
-        function get_ua(){
-            return UA
-        
-        }
-        
-    
-        """
-
-        ua = execjs.compile(js_ua, cwd=r'E:\Znode\node_modules\npm\node_modules').call("get_ua")
         return ua
 
     def login_(self):
-        pwd = self.get_pwd()
-        print(pwd)
-        # ua = self.get_ua()
-        # print(ua)
+        # pwd = self.get_pwd()
+        # print(pwd)
+        # os.environ["EXECJS_RUNTIME"] = "JScript"
+        ua = self.get_ua()
+        print(ua)
 
 
 if __name__ == '__main__':
