@@ -1,5 +1,5 @@
 """
-Base_Url: https://www.17173_已完成.com/
+Base_Url: https://www.17173.com/
 Author: jing
 Modify: 2020/10/22
 Notes: 此网站的破解已经在另一个项目中使用selenium破解成功 - https://github.com/onepureman/selenium_login_cracking/tree/jing/17173_已完成
@@ -10,10 +10,8 @@ import requests
 
 class Login():
 
-
     def __init__(self, user, pwd):
         """
-
         :param user:
         :param pwd:
         """

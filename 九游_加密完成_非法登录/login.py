@@ -3,6 +3,8 @@
 Base_Url: https://passport.9you.com/login/ulogin.php?callback=loginCallbackNew&denyCallbackURL=http://uhg.9you.com/vip/Member/sso_deny&sid=3588812f462a13bc909e04fce8d15ae9
 Author: jing
 Modify: 2020/10/22
+
+Notes: 2021/01/25 在代码补全时发现 网站死循环跳转 等下次补全时 在进行观察
 """
 
 

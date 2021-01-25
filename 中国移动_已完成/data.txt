@@ -1,0 +1,12 @@
+accountType: 02
+account:
+password:
+pwdType: 03
+smsPwd:
+inputCode:
+backUrl: https://shop.10086.cn/mall_100_100.html?forcelogin=1
+rememberMe: 0
+channelID: 12002
+loginMode: 01
+protocol: https:
+timestamp: 1611307980829

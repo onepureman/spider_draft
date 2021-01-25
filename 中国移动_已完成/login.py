@@ -1,13 +1,16 @@
 """
 Base_Url: https://login.10086.cn/login.htm
 Author: jing
-Modify: 2020/10/22
+Modify: 2021/01/25
+Notes: 本人使用qq邮箱验证登录 没有问题 出现 { **** "desc":"认证成功"  ***} 等字样
 """
 
 import time
 import execjs
 import requests
 from pprint import pprint
+from lxml import etree
+import re
 
 
 class Login(object):
@@ -37,7 +40,7 @@ class Login(object):
         return pwd
 
     def get_captcha(self):
-        url = "https://login.10086.cn/captchazh.htm?type=12&timestamp=1604977071523"
+        url = "https://login.10086.cn/captchazh.htm?type=12&timestamp=" + str(int(time.time()*1000))
 
         response = self.sess.get(url)
 
@@ -45,15 +48,38 @@ class Login(object):
             f.write(response.content)
 
     def login_(self):
-        self.sess.post("https://login.10086.cn/checkUidAvailable.action")
-        self.get_captcha()
+
+        response = self.sess.get('https://shop.10086.cn/i/?f=home&welcome=' + str(int(time.time()*1000)))
+        html = etree.HTML(response.content.decode())
+        href = html.xpath("//a[@id='dropdownMenu2']/@href")[0]
+        channelID = re.findall("channelID=(.*?)&", href)[0]
+        backUrl = re.findall("backUrl=(.*)", href)[0]
+
         data = self.load_data("data.txt")
-        data["timestamp"] = str(int(time.time()*1000))
+        data["timestamp"] = str(int(time.time() * 1000))
         data["password"] = self.get_pwd(self.pwd)
-        data["account"]= self.get_pwd(self.user)
-        data["inputCode"] = input("请输入验证码:")
+        data["account"] = self.get_pwd(self.user)
+
+        data["channelID"] = channelID
+        data["backUrl"] = backUrl
+
         pprint(data)
+
+        self.sess.post("https://login.10086.cn/checkUidAvailable.action")
+
+        need_ve = self.sess.get("https://login.10086.cn/needVerifyCode.htm?accountType=02&account={}&timestamp={}".format(self.user, str(int(time.time() * 1000)))).json()
+        if need_ve["needVerifyCode"] == "1":
+            self.get_captcha()
+            data["inputCode"] = input("请输入验证码:")
+
+        self.sess.headers["Host"] = "login.10086.cn"
+        self.sess.headers["Origin"] = "https://login.10086.cn"
+        self.sess.cookies["captchatype"] = "z"
+        self.sess.headers["Referer"] = "https://login.10086.cn/login.html?channelID={}&backUrl={}?f=home&welcome={}".format(channelID, backUrl, str(int(time.time() * 1000)))
+
+        print(self.sess.cookies)
         res = self.sess.post(self.login_url, data=data)
+
         print(res.content.decode())
 
 
@@ -63,5 +89,3 @@ if __name__ == '__main__':
 
     login = Login(user, pwd)  # TODO: 输入账号&密码
     login.login_()
-
-

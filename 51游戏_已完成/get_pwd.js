@@ -1,6 +1,5 @@
- function getpwd(pwd, key, iv){
-            var inkey = typeof key != 'undefined' ? key : key;
-            var iniv = typeof iv != 'undefined' ? iv : iv;
+ function getpwd(pwd, inkey, iniv){
+
             var key = CryptoJS.enc.Utf8.parse(inkey.substring(0,16));// 秘钥
             var iv = CryptoJS.enc.Utf8.parse(iniv.substring(0,16));//向量iv
             var encrypted = CryptoJS.AES.encrypt(pwd, key, {
