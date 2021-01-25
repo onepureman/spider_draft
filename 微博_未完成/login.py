@@ -1,7 +1,7 @@
 """
 Base_Url:
 Author:
-Modify:
+Modify:  已经不适用  微博登录已经必须使用手机短信验证码
 """
 
 import time

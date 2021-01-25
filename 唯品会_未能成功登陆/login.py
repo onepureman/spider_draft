@@ -30,7 +30,7 @@ class Login(object):
         return pwd
 
     def login_(self):
-        self.sess.get("https://passport.vip.com/login")
+        self.sess.get("https://passport.vip.com/login?src=https%3A%2F%2Fwww.vip.com%2F")
         print(self.sess.cookies)
         pwd = self.get_pwd()
         data = {
@@ -52,9 +52,10 @@ class Login(object):
         #
         # response2 = self.sess.get("https://safe.vip.com/profile/safeCenter?callback=getAccountSafeInfo&_=1603272668032")
         # print(response2.content.decode())
+        "vipshop_passport_src"
 
 
 
 if __name__ == '__main__':
-    login = Login("", "")  # TODO: 输入 账号 密码
+    login = Login("18513606786", "jing1995")  # TODO: 输入 账号 密码
     login.login_()

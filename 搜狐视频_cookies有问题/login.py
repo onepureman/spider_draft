@@ -23,9 +23,10 @@ class Login(object):
             "accept-language": "zh-CN,zh;q=0.9",
             "cache-control": "max-age=0",
             # "content-length": "129",
+            "content-type": "application/x-www-form-urlencoded",
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
             "origin": "https://tv.sohu.com",
-            "referer": "https://tv.sohu.com/",
+            "referer": "https://my.tv.sohu.com/user/reg/reginfo.do?bru=https%3A//tv.sohu.com/",
             }
         self.login_url = "https://v4.passport.sohu.com/i/login/107405"
 
@@ -45,24 +46,25 @@ class Login(object):
         return pwd
 
     def login_(self):
-        self.sess.get("https://p.aty.sohu.com/p?cat=251366993&pos=15525|14794|14795|14796|14798|14799|14797|cp_20_1|19001|19002&al=&qd=&suv=&age=&labelFirstIds=&pageUrl=https%3A//tv.sohu.com/&pagerefer=")
+        self.sess.get("https://my.tv.sohu.com/user/reg/reginfo.do?bru=https%3A//tv.sohu.com/")
+        self.sess.get("https://pv.sohu.com/suv/?t?=1611564294005725_2560_1440?r?=https://tv.sohu.com/")
+        self.sess.get("https://v4.passport.sohu.com/i/cookie/common?callback=passport403_cb1611564294965&_=1611564294971")
 
         self.sess.headers = self.load_data("data.txt")
 
-        print(self.sess.cookies)
         pwd = self.get_pwd()
         data = {
-
             "userid": self.user,
             "password": pwd,
             "persistentCookie": "1",
             "appid": "107405",
             "callback": "passport403_cb" + str(int(time.time()*1000)),
-
         }
 
         pprint(data)
-
+        self.sess.cookies["lastpassport"] = self.user
+        self.sess.cookies["t"] = str(int(time.time() * 1000))
+        print(self.sess.cookies)
         res = self.sess.post(self.login_url, data=data)
         print(res.content.decode())
 

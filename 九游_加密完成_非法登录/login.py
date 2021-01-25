@@ -19,7 +19,6 @@ class Login():
         self.pwd = pwd
         self.sess = requests.session()
 
-
     def get_pwd(self):
         with open('./get_pwd.js', encoding='utf-8') as f:
             js_pwd = f.read()
@@ -35,7 +34,6 @@ class Login():
         self.sess.get("https://login.passport.9you.com/sso_tddevice.jsp")
         pwd = self.get_pwd()
         print(pwd)
-
 
         self.get_captcha()
         login_url_raw = "https://login.passport.9you.com/checkJCode?callback=_jqjsp&userName={}&password={}&id=LX_GAME&identifyingCode={}&&_{}="

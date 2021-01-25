@@ -2,6 +2,8 @@
 Base_Url:http://www.hexun.com/
 Author:jing
 Modify:2020/10/28
+
+notes: 2021/01/25 多次登录会有点选验证
 """
 
 import time
@@ -32,8 +34,10 @@ class Login(object):
     def login_(self):
         self.sess.get("http://www.hexun.com/")
         data = {"appid": "9073746913", "act": "get"}
-        pubkey = self.sess.post("https://reg.hexun.com/wapreg/pubkey.aspx", data=data).json()["data"]["pubkey"]
-
+        res = self.sess.post("https://reg.hexun.com/wapreg/pubkey.aspx", data=data).json()
+        pubkey = res["data"]["pubkey"]
+        key = res["data"]["key"]
+        print(pubkey, key)
         pwd = self.get_pwd(pubkey)
         print(pwd)
 
