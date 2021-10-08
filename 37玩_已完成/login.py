@@ -68,7 +68,6 @@ function getpwd(a) {
 }
 
 
-
         """
 
         pwd = execjs.compile(js_pwd).call("getpwd", self.pwd)
@@ -85,12 +84,12 @@ function getpwd(a) {
 
 
 if __name__ == '__main__':
-    user = ""
-    pwd = "222222"
+    user = "jingyq_111"
+    pwd = "jing1995"
 
     login = Login(user, pwd)  # TODO: 输入账号&密码
     login.login_()
 
 
-
+print('\u767b\u5f55\u6210\u529f')
 

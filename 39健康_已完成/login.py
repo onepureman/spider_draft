@@ -36,7 +36,6 @@ class Login(object):
         for (i = 0; i < d.length; i++) f = c[i % 5], s = String.fromCharCode(d.charCodeAt(i) ^ f), e += b[s.charCodeAt(0) >> 4] + b[15 & s.charCodeAt(0)];
         return e
     }
-
         """
 
         pwd = execjs.compile(js_pwd).call("getpwd", input_)
@@ -46,7 +45,7 @@ class Login(object):
         user = self.get_pwd(self.user)
         pwd = self.get_pwd(self.pwd)
         data = self.load_data("data.txt")
-
+        print(user, pwd)
         r = requests.get(
             "https://my.39.net/post.ashx?callback=jQuery17206856937338735567_1602577896209&action=jsonploginf0&uname={}&pwd={}&safecode=&app=1&_=1602577911928".format(
                 user, pwd), headers=data)
@@ -54,7 +53,7 @@ class Login(object):
 
 
 if __name__ == '__main__':
-    user = ""
+    user = "adffgadf"
     pwd = "222222"
 
     login = Login(user, pwd)  # TODO: 输入账号&密码
