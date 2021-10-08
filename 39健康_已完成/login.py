@@ -45,7 +45,7 @@ class Login(object):
         user = self.get_pwd(self.user)
         pwd = self.get_pwd(self.pwd)
         data = self.load_data("data.txt")
-        print(user, pwd)
+
         r = requests.get(
             "https://my.39.net/post.ashx?callback=jQuery17206856937338735567_1602577896209&action=jsonploginf0&uname={}&pwd={}&safecode=&app=1&_=1602577911928".format(
                 user, pwd), headers=data)
