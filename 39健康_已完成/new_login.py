@@ -50,7 +50,7 @@ if __name__ == '__main__':
     user = ""
     pwd = ""
 
-    login = Login(user, pwd)  # TODO: 输入账号&密码
+    login = Login(user, pwd)  #  TODO: 输入账号&密码
     login.login_()
 
 
